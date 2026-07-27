@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080809">
+  <meta name="description" content="Drumloom ist das moderne Übungsinstrument für Drummer: Metronom, Notation, Drum-Playback, Routinen und mehr als 1.000 Übungen.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Drumloom — Practice like timing matters.">
+  <meta property="og:description" content="Metronom, Notation, Playback und Routinen in einem fokussierten Übungsinstrument.">
+  <meta property="og:image" content="https://drumloom-practice.haid-creative.chatgpt.site/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Drumloom — Practice like timing matters.">
+  <meta name="twitter:description" content="Metronom, Notation, Playback und Routinen in einem fokussierten Übungsinstrument.">
+  <meta name="twitter:image" content="https://drumloom-practice.haid-creative.chatgpt.site/og.png">
+  <title>Drumloom — Practice like timing matters.</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080809;
+      --panel: #111113;
+      --panel-2: #18181b;
+      --text: #f5f3ef;
+      --muted: #aaa59d;
+      --dim: #716d67;
+      --line: rgba(255,255,255,.11);
+      --orange: #ff9f1a;
+      --orange-2: #ffc46e;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 78% -4%, rgba(255,159,26,.12), transparent 30rem),
+        radial-gradient(circle at 8% 35%, rgba(255,159,26,.04), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body[data-language="de"] .lang-en,
+    body[data-language="en"] .lang-de { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .skip {
+      position: fixed; z-index: 999; top: 8px; left: 8px; padding: 10px 14px;
+      color: #111; background: #fff; border-radius: 10px; transform: translateY(-160%);
+    }
+    .skip:focus { transform: none; }
+
+    header {
+      position: sticky; z-index: 50; top: 0;
+      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+      min-height: 76px; border-bottom: 1px solid var(--line);
+      background: rgba(8,8,9,.82); backdrop-filter: blur(24px) saturate(1.35);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; width: fit-content; }
+    .brand img { width: 40px; height: 40px; border-radius: 11px; }
+    .brand strong { font-size: 13px; letter-spacing: .16em; }
+    nav { display: flex; gap: 26px; }
+    nav a { color: var(--muted); font-size: 13px; transition: color .2s ease; }
+    nav a:hover { color: var(--text); }
+    .header-actions { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+    .language-switch {
+      display: flex; padding: 3px; border: 1px solid var(--line); border-radius: 99px;
+    }
+    .language-switch button {
+      padding: 5px 9px; border: 0; border-radius: 99px; color: var(--dim);
+      background: transparent; font-size: 11px; font-weight: 800; cursor: pointer;
+    }
+    .language-switch button.active { color: #1b1105; background: var(--orange); }
+
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 48px; padding: 0 19px; border: 1px solid var(--line);
+      border-radius: 99px; font-size: 14px; font-weight: 720;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-small { min-height: 38px; color: var(--orange-2); border-color: rgba(255,159,26,.35); }
+    .button-primary {
+      min-height: 62px; color: #180e03; border: 0;
+      background: linear-gradient(135deg, var(--orange-2), var(--orange));
+      box-shadow: 0 18px 52px rgba(255,132,0,.18);
+    }
+    .button:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--orange-2); outline-offset: 3px;
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 1.03fr .97fr; align-items: center;
+      min-height: 760px; padding: 82px 0 90px;
+    }
+    .eyebrow {
+      display: flex; align-items: center; gap: 9px; margin: 0 0 20px;
+      color: var(--orange-2); font-size: 12px; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--orange);
+      box-shadow: 0 0 18px var(--orange);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 720px; margin-bottom: 24px; font-size: clamp(3.7rem, 7vw, 6.8rem);
+      line-height: .92; letter-spacing: -.065em;
+    }
+    h1 em, h2 em { color: var(--orange); font-style: normal; }
+    .hero-copy { position: relative; z-index: 2; padding-right: 42px; }
+    .hero-body { max-width: 620px; color: var(--muted); font-size: clamp(1.08rem, 1.8vw, 1.34rem); }
+    .hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 34px; }
+    .store-mark { width: 28px; height: 28px; border-radius: 8px; }
+    .store-copy { display: grid; text-align: left; line-height: 1.1; }
+    .store-copy small { margin-bottom: 4px; font-size: 9px; letter-spacing: .11em; }
+    .price-note { display: grid; }
+    .price-note strong { font-size: 22px; }
+    .price-note span { color: var(--muted); font-size: 13px; }
+    .trust {
+      display: flex; flex-wrap: wrap; gap: 17px; margin-top: 34px; color: var(--muted);
+      font-size: 12px;
+    }
+    .trust span::before { content: "✓"; margin-right: 7px; color: var(--orange); font-weight: 900; }
+
+    .hero-visual { position: relative; display: grid; place-items: center; min-height: 610px; }
+    .halo {
+      position: absolute; width: 470px; height: 470px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,159,26,.18), rgba(255,159,26,.02) 54%, transparent 70%);
+      filter: blur(8px);
+    }
+    .phone {
+      position: relative; z-index: 2; width: min(330px, 75vw); aspect-ratio: .52;
+      padding: 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 55px;
+      background: #050506; box-shadow: 0 40px 100px rgba(0,0,0,.65), inset 0 0 0 5px #18181a;
+      transform: rotate(2deg);
+    }
+    .island {
+      position: absolute; z-index: 4; top: 27px; left: 50%; width: 92px; height: 25px;
+      border-radius: 99px; background: #000; transform: translateX(-50%);
+    }
+    .screen {
+      display: flex; flex-direction: column; height: 100%; padding: 56px 25px 28px;
+      overflow: hidden; border-radius: 40px;
+      background: radial-gradient(circle at 50% 16%, #252015, #101012 36%, #09090a 75%);
+    }
+    .screen-top, .screen-foot { display: flex; justify-content: space-between; color: #918b83; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .meter-pill { padding: 4px 9px; color: var(--orange-2); border: 1px solid rgba(255,159,26,.3); border-radius: 99px; }
+    .tempo { display: grid; place-items: center; margin: auto 0 20px; }
+    .tempo small { color: var(--muted); font-size: 24px; }
+    .tempo strong { font-size: 98px; line-height: .95; letter-spacing: -.08em; }
+    .tempo span { margin-top: 9px; color: var(--orange-2); font-size: 11px; font-weight: 900; letter-spacing: .2em; }
+    .pulses { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin: 28px 0; }
+    .pulses i { height: 6px; border-radius: 99px; background: #2b2b2e; }
+    .pulses i:nth-child(3) { background: var(--orange); box-shadow: 0 0 20px rgba(255,159,26,.7); }
+    .play {
+      display: grid; place-items: center; width: 106px; height: 106px; margin: 0 auto 40px;
+      border: 0; border-radius: 50%; color: #190f04; background: var(--orange);
+      box-shadow: 0 16px 45px rgba(255,159,26,.25); font-size: 29px;
+    }
+    .screen-foot { margin-top: auto; }
+    .float-card {
+      position: absolute; z-index: 3; display: flex; align-items: center; gap: 12px;
+      min-width: 164px; padding: 13px 15px; border: 1px solid var(--line);
+      border-radius: 17px; background: rgba(24,24,27,.88); box-shadow: 0 20px 45px rgba(0,0,0,.35);
+      backdrop-filter: blur(18px);
+    }
+    .float-card strong, .float-card small { display: block; }
+    .float-card small { color: var(--muted); font-size: 10px; }
+    .float-card b { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: var(--orange); background: rgba(255,159,26,.1); }
+    .float-one { top: 18%; right: -1%; }
+    .float-two { bottom: 17%; left: 0; }
+
+    .statement {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end;
+      padding: 108px 0 62px; border-top: 1px solid var(--line);
+    }
+    h2 { font-size: clamp(2.35rem, 5vw, 4.7rem); line-height: 1; letter-spacing: -.055em; }
+    .statement h2 { margin: 0; }
+    .statement > p { max-width: 520px; margin: 0 0 6px; color: var(--muted); font-size: 18px; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; padding-bottom: 120px; }
+    .feature {
+      min-height: 275px; padding: 26px; overflow: hidden; border: 1px solid var(--line);
+      border-radius: 25px; background: linear-gradient(145deg, rgba(24,24,27,.9), rgba(14,14,16,.9));
+    }
+    .feature-number { color: #5c5853; font: 700 11px/1 ui-monospace, monospace; letter-spacing: .1em; }
+    .feature h3 { margin: 76px 0 9px; font-size: 22px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 14px; }
+    .feature-visual { display: flex; align-items: center; gap: 7px; height: 46px; margin-top: 32px; }
+    .feature-visual i {
+      display: block; flex: 1; height: 5px; border-radius: 99px; background: #323236;
+    }
+    .feature-visual i:nth-child(2), .feature-visual i:nth-child(5) { background: var(--orange); }
+    .feature-visual.steps i {
+      display: grid; place-items: center; height: 35px; color: var(--muted); font-style: normal;
+      border: 1px solid var(--line); background: #0d0d0f;
+    }
+    .feature-visual.steps i:nth-child(4) { color: #181006; background: var(--orange); }
+
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+      padding: 125px 0; border-top: 1px solid var(--line);
+    }
+    .split-copy > p:not(.eyebrow) { max-width: 520px; color: var(--muted); font-size: 18px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .chips span { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); font: 700 10px/1 ui-monospace, monospace; }
+    .demo {
+      padding: 22px; border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(150deg, #1a1a1e, #0e0e10); box-shadow: 0 35px 80px rgba(0,0,0,.34);
+    }
+    .demo-head, .demo-meta { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .demo-head small, .demo-meta { color: var(--muted); font-size: 11px; }
+    .demo-head strong { display: block; margin-top: 5px; font-size: 22px; }
+    .shuffle { padding: 9px 12px; border: 1px solid rgba(255,159,26,.28); border-radius: 99px; color: var(--orange-2); background: rgba(255,159,26,.07); font-size: 11px; }
+    .staff {
+      position: relative; height: 150px; margin: 24px 0; overflow: hidden;
+      background: repeating-linear-gradient(to bottom, transparent 0 19px, rgba(255,255,255,.33) 20px 21px);
+      background-position-y: 24px; background-size: 100% 21px;
+    }
+    .staff::before {
+      content: ""; position: absolute; top: 21px; bottom: 16px; left: 51%; width: 2px;
+      background: linear-gradient(var(--orange), rgba(255,159,26,.08));
+      box-shadow: 0 0 18px rgba(255,159,26,.55);
+    }
+    .note { position: absolute; width: 16px; height: 12px; border-radius: 50%; background: #f5f3ef; transform: rotate(-12deg); }
+    .note::after { content: ""; position: absolute; right: 1px; bottom: 6px; width: 2px; height: 42px; background: #f5f3ef; transform: rotate(12deg); transform-origin: bottom; }
+    .n1 { left: 7%; top: 70px; } .n2 { left: 20%; top: 49px; } .n3 { left: 33%; top: 70px; } .n4 { left: 46%; top: 49px; }
+    .n5 { left: 58%; top: 70px; background: var(--orange); } .n6 { left: 70%; top: 49px; } .n7 { left: 82%; top: 70px; } .n8 { left: 93%; top: 49px; }
+    .demo-meta button { width: 38px; height: 38px; border: 0; border-radius: 50%; color: #160e03; background: var(--orange); }
+
+    .routine-board { padding: 24px; border: 1px solid var(--line); border-radius: 28px; background: #131316; }
+    .routine-head { display: flex; justify-content: space-between; margin-bottom: 22px; color: var(--orange-2); font: 800 11px/1 ui-monospace, monospace; }
+    .routine-row { display: grid; grid-template-columns: 34px 1fr auto; gap: 12px; align-items: center; padding: 14px 10px; border-top: 1px solid var(--line); }
+    .routine-row.active { margin-inline: -6px; padding-inline: 16px; border: 0; border-radius: 15px; background: rgba(255,159,26,.11); }
+    .routine-row > span { color: var(--dim); font: 700 11px/1 ui-monospace, monospace; }
+    .routine-row p { margin: 0; }
+    .routine-row strong, .routine-row small { display: block; }
+    .routine-row small, .routine-row time { color: var(--muted); font-size: 11px; }
+    .progress { height: 5px; margin-top: 22px; overflow: hidden; border-radius: 99px; background: #2b2b2f; }
+    .progress i { display: block; width: 42%; height: 100%; border-radius: inherit; background: var(--orange); }
+
+    .pricing { display: grid; grid-template-columns: .8fr 1.2fr; gap: 16px; padding: 120px 0; border-top: 1px solid var(--line); }
+    .price-card { position: relative; min-height: 470px; padding: 36px; overflow: hidden; border: 1px solid var(--line); border-radius: 30px; background: #111113; }
+    .price-card > small:first-child { color: var(--orange-2); font-weight: 900; letter-spacing: .12em; }
+    .price-card h2 { margin: 45px 0 18px; font-size: 42px; }
+    .price-card > p { max-width: 480px; color: var(--muted); }
+    .price-card .amount { display: block; margin-top: 70px; font-size: 52px; letter-spacing: -.05em; }
+    .pro { border-color: rgba(255,159,26,.32); background: radial-gradient(circle at 90% 0, rgba(255,159,26,.14), transparent 25rem), #171719; }
+    .pro .amount { margin: 28px 0 12px; }
+    .pro ul { display: grid; gap: 10px; margin: 24px 0 30px; padding: 0; list-style: none; color: var(--muted); }
+    .pro li::before { content: "✓"; margin-right: 9px; color: var(--orange); font-weight: 900; }
+    .no-sub { display: block; margin-top: 16px; color: var(--muted); font-size: 12px; }
+
+    .privacy {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
+      padding: 32px; border: 1px solid var(--line); border-radius: 28px; background: #111113;
+    }
+    .privacy img { width: 66px; height: 66px; border-radius: 18px; }
+    .privacy h2 { margin: 0 0 8px; font-size: 29px; }
+    .privacy p { max-width: 660px; margin: 0; color: var(--muted); }
+    .privacy-tags { display: grid; gap: 7px; }
+    .privacy-tags span { color: var(--orange-2); font: 800 10px/1 ui-monospace, monospace; }
+
+    .faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; padding: 120px 0; }
+    .faq h2 { font-size: 50px; }
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { padding: 22px 4px; cursor: pointer; font-size: 18px; }
+    details p { padding: 0 4px 22px; color: var(--muted); }
+
+    .legal-section { padding: 110px 0; border-top: 1px solid var(--line); }
+    .legal-section h2 { font-size: 46px; }
+    .legal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .legal-card { padding: 28px; border: 1px solid var(--line); border-radius: 24px; background: #101012; }
+    .legal-card h3 { margin-bottom: 17px; }
+    .legal-card p, .legal-card li { color: var(--muted); font-size: 14px; }
+    .legal-card ul { padding-left: 18px; }
+    .config-value { color: var(--orange-2); }
+
+    .closing { display: grid; place-items: center; padding: 110px 20px 125px; text-align: center; border-top: 1px solid var(--line); }
+    .closing img { width: 114px; height: 114px; margin-bottom: 28px; border-radius: 27px; box-shadow: 0 25px 60px rgba(0,0,0,.4); }
+    .closing h2 { max-width: 820px; }
+    .closing .eyebrow { margin-inline: auto; }
+    .closing p:last-child { margin-top: 18px; color: var(--muted); }
+
+    footer {
+      display: grid; grid-template-columns: 1fr auto auto auto; gap: 28px; align-items: center;
+      min-height: 110px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px;
+    }
+    footer .brand { color: var(--text); }
+    footer .brand img { width: 36px; height: 36px; }
+    footer .links { display: flex; gap: 18px; }
+
+    @media (max-width: 900px) {
+      header { grid-template-columns: 1fr auto; }
+      nav { display: none; }
+      .header-actions .button-small { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 70px; }
+      .hero-copy { padding-right: 0; }
+      .hero-visual { margin-top: 40px; }
+      .statement, .split, .faq { grid-template-columns: 1fr; gap: 36px; }
+      .feature-grid { grid-template-columns: repeat(2,1fr); }
+      .pricing { grid-template-columns: 1fr; }
+      .privacy { grid-template-columns: auto 1fr; }
+      .privacy-tags { grid-column: 2; display: flex; flex-wrap: wrap; }
+      footer { grid-template-columns: 1fr auto; padding-block: 26px; }
+      footer > p { grid-column: 1; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      header { min-height: 68px; }
+      .brand strong { display: none; }
+      h1 { font-size: clamp(3.2rem, 17vw, 5.1rem); }
+      .hero { min-height: 0; padding: 58px 0 74px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; }
+      .trust { flex-direction: column; gap: 9px; }
+      .hero-visual { min-height: 560px; margin-left: -12px; }
+      .phone { width: 290px; border-radius: 48px; }
+      .float-one { right: -4px; }
+      .float-two { left: -4px; }
+      .statement { padding-top: 78px; }
+      .feature-grid { grid-template-columns: 1fr; padding-bottom: 80px; }
+      .feature { min-height: 240px; }
+      .feature h3 { margin-top: 54px; }
+      .split, .pricing, .faq, .legal-section { padding-block: 84px; }
+      .split.routine { display: flex; flex-direction: column-reverse; }
+      .legal-grid { grid-template-columns: 1fr; }
+      .privacy { grid-template-columns: 1fr; }
+      .privacy-tags { grid-column: 1; }
+      .price-card { min-height: 420px; padding: 28px; }
+      .faq h2 { font-size: 42px; }
+      footer { grid-template-columns: 1fr; gap: 15px; }
+      footer .links { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+    /* Real product imagery captured from the current Drumloom build. */
+    .hero-visual { min-height: 710px; perspective: 1400px; }
+    .hero-device, .device-window, .product-shot, .craft-device {
+      overflow: hidden; padding: 6px; border: 1px solid rgba(255,255,255,.18);
+      background: #070708; box-shadow: 0 38px 100px rgba(0,0,0,.52), inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+    .hero-device {
+      position: absolute; top: 8px; left: 50%; z-index: 2; width: min(70%,350px);
+      border-radius: 58px; transform-origin: 50% 90%;
+    }
+    .hero-device img, .device-window img, .product-shot img, .craft-device img { width: 100%; height: auto; }
+    .hero-device img { border-radius: 51px; }
+    .hero-device-main { z-index: 3; transform: translateX(-42%) rotateY(-5deg) rotateZ(2deg); }
+    .hero-device-back {
+      top: 54px; z-index: 1; opacity: .46; filter: saturate(.75) brightness(.72);
+      transform: translateX(-84%) rotateY(16deg) rotateZ(-8deg) scale(.91);
+    }
+    .float-one { top: 20%; left: -5%; right: auto; }
+    .float-two { right: -3%; bottom: 14%; left: auto; }
+
+    .app-showcase { padding: 126px 0 148px; border-top: 1px solid var(--line); }
+    .showcase-head {
+      display: grid; grid-template-columns: 1fr .65fr; align-items: end;
+      gap: 70px; margin-bottom: 70px;
+    }
+    .showcase-head h2, .craft-copy h2 {
+      max-width: 850px; margin: 0; font-size: clamp(44px,5.4vw,78px);
+      font-weight: 620; letter-spacing: -.058em; line-height: .98;
+    }
+    .showcase-head > p, .craft-copy > p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.65; }
+    .screen-reel {
+      display: grid; grid-template-columns: repeat(5,minmax(0,1fr));
+      align-items: center; gap: 13px; perspective: 1600px;
+    }
+    .screen-shot { min-width: 0; margin: 0; transform: translateY(18px) rotateY(3deg); }
+    .screen-shot:nth-child(2n) { transform: translateY(-16px) rotateY(-3deg); }
+    .screen-shot-featured { z-index: 2; transform: translateY(-28px) scale(1.055); }
+    .device-window {
+      border-radius: 32px; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+    .device-window img { border-radius: 27px; }
+    .screen-shot:hover .device-window {
+      border-color: rgba(255,159,26,.48);
+      box-shadow: 0 46px 120px rgba(0,0,0,.62), 0 0 0 1px rgba(255,159,26,.14);
+      transform: translateY(-10px);
+    }
+    .screen-shot figcaption {
+      display: flex; align-items: center; gap: 8px; margin-top: 17px;
+      color: var(--muted); font-size: 12px; font-weight: 700;
+    }
+    .screen-shot figcaption > span:first-child { color: var(--orange); font: 700 10px/1 ui-monospace,monospace; }
+
+    .product-shot {
+      width: min(100%,395px); max-height: 720px; justify-self: center;
+      border-radius: 52px;
+    }
+    .product-shot img { border-radius: 46px; }
+    .product-shot-library { transform: rotate(2deg); }
+    .product-shot-practice { transform: rotate(-2deg); }
+
+    .craft-section {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      padding-top: 0; padding-bottom: 150px;
+    }
+    .craft-card {
+      position: relative; min-height: 780px; overflow: hidden; padding: 36px;
+      border: 1px solid var(--line); border-radius: 36px;
+      background: radial-gradient(circle at 80% 10%,rgba(255,159,26,.13),transparent 34rem),var(--panel);
+    }
+    .craft-copy { position: relative; z-index: 2; max-width: 520px; }
+    .craft-copy h2 { font-size: clamp(38px,4.2vw,58px); }
+    .craft-copy > p { margin-top: 24px; font-size: 16px; }
+    .craft-device {
+      position: absolute; right: -4%; bottom: -47%; width: min(68%,390px);
+      border-radius: 50px; transform: rotate(4deg);
+    }
+    .craft-device img { border-radius: 44px; }
+    .craft-tuner { background: radial-gradient(circle at 20% 12%,rgba(255,190,96,.11),transparent 30rem),#121214; }
+    .craft-tuner .craft-device { right: auto; left: -2%; transform: rotate(-3deg); }
+
+    @supports (animation-timeline: view()) {
+      .screen-shot, .product-shot, .craft-card {
+        animation: product-rise both linear;
+        animation-timeline: view();
+        animation-range: entry 0% cover 35%;
+      }
+      @keyframes product-rise {
+        from { opacity: 0; translate: 0 44px; }
+        to { opacity: 1; translate: 0 0; }
+      }
+    }
+    @media (max-width: 980px) {
+      .showcase-head { grid-template-columns: 1fr; gap: 24px; }
+      .screen-reel {
+        grid-template-columns: repeat(5,210px); margin-inline: -20px;
+        padding: 28px 20px 40px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      }
+      .screen-reel::-webkit-scrollbar { display: none; }
+      .screen-shot { scroll-snap-align: center; }
+      .craft-section { grid-template-columns: 1fr; }
+      .craft-card { min-height: 720px; }
+    }
+    @media (max-width: 620px) {
+      .hero-visual { min-height: 650px; }
+      .hero-device { width: min(70%,315px); }
+      .hero-device-main { transform: translateX(-45%) rotateZ(2deg); }
+      .hero-device-back { transform: translateX(-78%) rotateZ(-8deg) scale(.9); }
+      .float-one { top: 16%; left: 0; }
+      .float-two { right: 0; bottom: 12%; }
+      .app-showcase { padding: 94px 0 110px; }
+      .showcase-head { margin-bottom: 40px; }
+      .showcase-head h2, .craft-copy h2 { font-size: 43px; }
+      .screen-reel {
+        grid-template-columns: repeat(5,226px); margin-inline: -14px; padding-inline: 14px;
+      }
+      .craft-section { padding-bottom: 100px; }
+      .craft-card { min-height: 690px; padding: 26px; border-radius: 28px; }
+      .craft-device { right: -5%; bottom: -37%; width: min(76%,340px); }
+      .product-shot { width: min(82vw,340px); border-radius: 45px; }
+      .product-shot img { border-radius: 39px; }
+    }
+  </style>
+</head>
+<body data-language="de">
+  <a class="skip" href="#main">Zum Inhalt</a>
+
+  <header class="wrap">
+    <a class="brand" href="#top" aria-label="Drumloom Startseite">
+      <img src="./public/brand-mark.png" alt="">
+      <strong>DRUMLOOM</strong>
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <a href="#app">App</a>
+      <a href="#library"><span class="lang-de">Bibliothek</span><span class="lang-en">Library</span></a>
+      <a href="#create"><span class="lang-de">Erstellen</span><span class="lang-en">Create</span></a>
+      <a href="#pro">Pro</a>
+    </nav>
+    <div class="header-actions">
+      <div class="language-switch" aria-label="Sprache wählen">
+        <button id="language-de" class="active" type="button" aria-pressed="true">DE</button>
+        <button id="language-en" type="button" aria-pressed="false">EN</button>
+      </div>
+      <a class="button button-small app-store-link" href="#">
+        <span class="lang-de">Im App Store laden</span><span class="lang-en">Download on the App Store</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span>
+          <span class="lang-de">Das Übungsinstrument für Drummer</span>
+          <span class="lang-en">The practice instrument for drummers</span>
+        </p>
+        <h1>Practice like<br><em>timing matters.</em></h1>
+        <p class="hero-body lang-de">Drumloom verbindet ein präzises Metronom mit Notation, Drum-Playback und Routinen, die dich im Flow halten.</p>
+        <p class="hero-body lang-en">Drumloom brings a precise metronome, readable notation, drum playback and focused routines into one instrument.</p>
+        <div class="hero-actions">
+          <a class="button button-primary app-store-link" href="#">
+            <img class="store-mark" src="./public/brand-mark.png" alt="">
+            <span class="store-copy">
+              <small class="lang-de">JETZT LADEN</small><small class="lang-en">DOWNLOAD NOW</small>
+              <span class="lang-de">Im App Store laden</span><span class="lang-en">Download on the App Store</span>
+            </span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <div class="price-note">
+            <strong>19,99 €</strong>
+            <span class="lang-de">Ein Kauf. Für immer.</span>
+            <span class="lang-en">One purchase. Forever.</span>
+          </div>
+        </div>
+        <div class="trust">
+          <span class="lang-de">Samplegenau</span><span class="lang-en">Sample-accurate</span>
+          <span class="lang-de">Ohne Tracking</span><span class="lang-en">No tracking</span>
+          <span class="lang-de">Für iPhone · DE &amp; EN</span><span class="lang-en">For iPhone · EN &amp; DE</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Drumloom Metronom Vorschau">
+        <div class="halo"></div>
+        <div class="hero-device hero-device-main">
+          <img src="./public/app-metronome.jpg" width="1206" height="2622" alt="Drumloom Metronom – echter App-Screenshot">
+        </div>
+        <div class="hero-device hero-device-back">
+          <img src="./public/app-library.jpg" width="1206" height="2622" alt="Drumloom Bibliothek – echter App-Screenshot">
+        </div>
+        <div class="float-card float-one"><b>±</b><div><strong>0.0 ms</strong><small class="lang-de">Samplegenau</small><small class="lang-en">Sample-accurate</small></div></div>
+        <div class="float-card float-two"><b>✦</b><div><strong>Daily 20</strong><small>6 blocks · 20 min</small></div></div>
+      </div>
+    </section>
+
+    <section class="statement wrap" id="instrument">
+      <div>
+        <p class="eyebrow lang-de">Ein Instrument. Kein Menü-Labyrinth.</p>
+        <p class="eyebrow lang-en">One instrument. No menu maze.</p>
+        <h2 class="lang-de">Alles, was eine gute Session braucht.</h2>
+        <h2 class="lang-en">Everything a focused session needs.</h2>
+      </div>
+      <p class="lang-de">Öffnen, Tempo setzen, spielen. Die wichtigen Dinge bleiben im Blick; Details warten dort, wo du sie brauchst.</p>
+      <p class="lang-en">Open it, set the tempo and play. The essentials stay visible; deeper controls are there when you need them.</p>
+    </section>
+
+    <section class="app-showcase wrap" id="app">
+      <div class="showcase-head">
+        <div>
+          <p class="eyebrow lang-de">Echte App. Keine Render-Fantasie.</p>
+          <p class="eyebrow lang-en">The real app. No concept renders.</p>
+          <h2 class="lang-de">Fünf Werkzeuge. Ein ruhiger Flow.</h2>
+          <h2 class="lang-en">Five tools. One calm flow.</h2>
+        </div>
+        <p class="lang-de">Metronom, eigener Content, Practice, Bibliothek und Drum-Tuner greifen ineinander – ohne dass sich die App wie ein überladenes Studio-Menü anfühlt.</p>
+        <p class="lang-en">Metronome, creation, practice, library and drum tuning work as one system without turning the app into a studio menu maze.</p>
+      </div>
+      <div class="screen-reel" aria-label="Echte Drumloom App-Screens">
+        <figure class="screen-shot"><div class="device-window"><img src="./public/app-metronome.jpg" width="1206" height="2622" alt="Metronom"></div><figcaption><span>01</span> Metronom</figcaption></figure>
+        <figure class="screen-shot"><div class="device-window"><img src="./public/app-create.jpg" width="1206" height="2622" loading="lazy" alt="Pattern und Flow erstellen"></div><figcaption><span>02</span> <span class="lang-de">Erstellen</span><span class="lang-en">Create</span></figcaption></figure>
+        <figure class="screen-shot screen-shot-featured"><div class="device-window"><img src="./public/app-library.jpg" width="1206" height="2622" loading="lazy" alt="Übungsbibliothek"></div><figcaption><span>03</span> <span class="lang-de">Bibliothek</span><span class="lang-en">Library</span></figcaption></figure>
+        <figure class="screen-shot"><div class="device-window"><img src="./public/app-practice.jpg" width="1206" height="2622" loading="lazy" alt="Übungsroutinen"></div><figcaption><span>04</span> <span class="lang-de">Üben</span><span class="lang-en">Practice</span></figcaption></figure>
+        <figure class="screen-shot"><div class="device-window"><img src="./public/app-tuner.jpg" width="1206" height="2622" loading="lazy" alt="Drum-Tuner"></div><figcaption><span>05</span> Drum-Tuner</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="feature-grid wrap">
+      <article class="feature">
+        <span class="feature-number">01</span><div class="feature-visual"><i></i><i></i><i></i><i></i></div>
+        <h3>Metronome</h3>
+        <p class="lang-de">Großer Puls, Tap Tempo, Unterteilungen und Akzente ohne visuelles Rauschen.</p>
+        <p class="lang-en">Large pulse, tap tempo, subdivisions and accents without visual noise.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">02</span><div class="feature-visual steps"><i>R</i><i>L</i><i>R</i><i>F</i></div>
+        <h3 class="lang-de">Notation + Sound</h3><h3 class="lang-en">Notation + sound</h3>
+        <p class="lang-de">Cursor-synchrones Playback mit Ghost Notes, Flams, Swing und separaten Mixern.</p>
+        <p class="lang-en">Cursor-synced playback with ghosts, flams, swing and separate mix levels.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">03</span><div class="feature-visual"><i></i><i></i><i></i><i></i><i></i></div>
+        <h3>Poly</h3>
+        <p class="lang-de">Polyrhythmen und Polymeter sehen, hören und Schicht für Schicht verstehen.</p>
+        <p class="lang-en">See, hear and understand polyrhythms and polymeters layer by layer.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">04</span><div class="feature-visual steps"><i>R</i><i>L</i><i>—</i><i>K</i></div>
+        <h3 class="lang-de">Eigene Patterns</h3><h3 class="lang-en">Custom patterns</h3>
+        <p class="lang-de">R/L, Drumset, Pausen, Akzente und Flams im schnellen Step-Sequencer bauen.</p>
+        <p class="lang-en">Build R/L, drum kit, rests, accents and flams in a fast step sequencer.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">05</span><div class="feature-visual"><i></i><i></i><i></i><i></i></div>
+        <h3>Fresh Practice</h3>
+        <p class="lang-de">Täglich neue Vorschläge nach Kategorie und Level statt derselben Routine.</p>
+        <p class="lang-en">New daily picks by category and level instead of the same routine.</p>
+      </article>
+      <article class="feature">
+        <span class="feature-number">06</span><div class="feature-visual"><i></i><i></i><i></i><i></i><i></i></div>
+        <h3 class="lang-de">Fortschritt</h3><h3 class="lang-en">Progress</h3>
+        <p class="lang-de">Session-Log, Wochenziel und Tempo-PRs – lokal und ohne Tracking-SDK.</p>
+        <p class="lang-en">Session history, weekly goals and tempo PRs – local and tracker-free.</p>
+      </article>
+    </section>
+
+    <section class="split wrap" id="library">
+      <div class="split-copy">
+        <p class="eyebrow lang-de">Groß, aber nicht chaotisch</p>
+        <p class="eyebrow lang-en">Deep, never chaotic</p>
+        <h2 class="lang-de">1.267 Übungen.<br>Klar sortiert.</h2>
+        <h2 class="lang-en">1,267 exercises.<br>Clearly organized.</h2>
+        <p class="lang-de">Grooves, Fills, Rudiments, Stickings, Left Hand und Kick-Patterns – mit lesbarer Vorschau statt rätselhaften Titellisten.</p>
+        <p class="lang-en">Grooves, fills, rudiments, stickings, left-hand and kick patterns – with readable previews instead of mystery titles.</p>
+        <div class="chips"><span>GROOVES 573</span><span>FILLS 202</span><span>RUDIMENTS 134</span><span>KICK 120</span><span>STICKINGS 143</span><span>LEFT HAND 49</span></div>
+      </div>
+      <div class="product-shot product-shot-library">
+        <img src="./public/app-library.jpg" width="1206" height="2622" loading="lazy" alt="Drumloom Bibliothek – echter App-Screenshot">
+      </div>
+    </section>
+
+    <section class="split routine wrap" id="routines">
+      <div class="product-shot product-shot-practice">
+        <img src="./public/app-practice.jpg" width="1206" height="2622" loading="lazy" alt="Drumloom Practice – echter App-Screenshot">
+      </div>
+      <div class="split-copy">
+        <p class="eyebrow lang-de">Taktgenaue Routinen</p><p class="eyebrow lang-en">Bar-accurate routines</p>
+        <h2 class="lang-de">Du spielst.<br>Drumloom führt.</h2>
+        <h2 class="lang-en">You play.<br>Drumloom leads.</h2>
+        <p class="lang-de">Count-in, Tempo-Steps, Pausen und Blockwechsel laufen automatisch – nie mitten im Takt. Mit Lockscreen-Anzeige und Sprachansagen.</p>
+        <p class="lang-en">Count-ins, tempo steps, rests and block changes run automatically – never halfway through a bar. With voice cues and a Lock Screen view.</p>
+        <div class="chips"><span>COUNT-IN</span><span>BPM RAMP</span><span>LOCK SCREEN</span><span>VOICE CUES</span></div>
+      </div>
+    </section>
+
+    <section class="craft-section wrap" id="create">
+      <article class="craft-card craft-create">
+        <div class="craft-copy">
+          <p class="eyebrow lang-de">Deine Ideen werden spielbar</p><p class="eyebrow lang-en">Turn ideas into playable material</p>
+          <h2 class="lang-de">Pattern bauen. Loops verbinden. Speichern.</h2>
+          <h2 class="lang-en">Build patterns. Connect loops. Save.</h2>
+          <p class="lang-de">Im Step-Sequencer entstehen eigene Stickings und Drumset-Patterns. Im Flow-Builder werden Grooves, Fills und Rudiments zu langen, taktgenauen Formen.</p>
+          <p class="lang-en">Use the step sequencer for custom stickings and drum-kit patterns, then connect grooves, fills and rudiments into long, bar-accurate flows.</p>
+          <div class="chips"><span>STEP SEQUENCER</span><span>FLOW BUILDER</span><span>DAILY STICKING</span></div>
+        </div>
+        <div class="craft-device"><img src="./public/app-create.jpg" width="1206" height="2622" loading="lazy" alt="Drumloom Erstellen"></div>
+      </article>
+      <article class="craft-card craft-tuner">
+        <div class="craft-copy">
+          <p class="eyebrow lang-de">Drums stimmen, ohne Ratespiel</p><p class="eyebrow lang-en">Tune drums without the guesswork</p>
+          <h2 class="lang-de">Pitch, Lugs, Felle und Spektrum.</h2>
+          <h2 class="lang-en">Pitch, lugs, heads and spectrum.</h2>
+          <p class="lang-de">Der Drum-Tuner führt vom Grundton bis zur einzelnen Stimmschraube und speichert Setups für dein komplettes Kit.</p>
+          <p class="lang-en">The drum tuner guides you from the fundamental to every lug and saves setups for your complete kit.</p>
+          <div class="chips"><span>PITCH</span><span>LUGS</span><span>HEADS</span><span>SPECTRUM</span></div>
+        </div>
+        <div class="craft-device"><img src="./public/app-tuner.jpg" width="1206" height="2622" loading="lazy" alt="Drumloom Drum-Tuner"></div>
+      </article>
+    </section>
+
+    <section class="pricing wrap" id="pro">
+      <article class="price-card">
+        <small>FREE</small>
+        <h2 class="lang-de">Kostenlos starten.</h2><h2 class="lang-en">Start free.</h2>
+        <p class="lang-de">Das Standard-Metronom, spielbare Übungen in jeder Hauptkategorie, Daily Rotation und eine Basis-Routine bleiben kostenlos.</p>
+        <p class="lang-en">The standard metronome, playable exercises in every main category, Daily Rotation and one core routine stay free.</p>
+        <strong class="amount">0 €</strong>
+      </article>
+      <article class="price-card pro">
+        <small>DRUMLOOM PRO</small>
+        <h2 class="lang-de">Alles freischalten.</h2><h2 class="lang-en">Unlock everything.</h2>
+        <p class="lang-de">Die komplette Bibliothek, Poly, Generatoren, unbegrenzte Routinen, alle Sounds und der volle Fortschritt.</p>
+        <p class="lang-en">The full library, Poly, generators, unlimited routines, every sound and complete progress history.</p>
+        <strong class="amount">19,99 €</strong>
+        <ul class="lang-de"><li>1.267 Übungen plus Content-Updates</li><li>Alle Routinen, Generatoren und Sounds</li><li>Unbegrenzte eigene Patterns</li><li>Familienfreigabe</li></ul>
+        <ul class="lang-en"><li>1,267 exercises plus content updates</li><li>Every routine, generator and sound</li><li>Unlimited custom patterns</li><li>Family Sharing</li></ul>
+        <a class="button button-primary app-store-link" href="#"><span class="lang-de">Im App Store laden</span><span class="lang-en">Download on the App Store</span> ↗</a>
+        <span class="no-sub lang-de">Kein Abo. Niemals.</span><span class="no-sub lang-en">No subscription. Ever.</span>
+      </article>
+    </section>
+
+    <section class="privacy wrap">
+      <img src="./public/brand-mark.png" alt="">
+      <div>
+        <h2 class="lang-de">Deine Praxis bleibt deine.</h2><h2 class="lang-en">Your practice stays yours.</h2>
+        <p class="lang-de">Kein Account, keine Werbung, kein externes Analytics-SDK. Deine Routinen und Logs bleiben auf deinen Geräten und in deinem privaten iCloud-Bereich.</p>
+        <p class="lang-en">No account, no ads, no third-party analytics SDK. Your routines and logs stay on your devices and in your private iCloud container.</p>
+      </div>
+      <div class="privacy-tags"><span>NO ACCOUNT</span><span>NO ADS</span><span>PRIVATE iCLOUD</span></div>
+    </section>
+
+    <section class="faq wrap">
+      <h2 class="lang-de">Kurz beantwortet.</h2><h2 class="lang-en">Straight answers.</h2>
+      <div>
+        <details><summary><span class="lang-de">Brauche ich ein Abo?</span><span class="lang-en">Do I need a subscription?</span></summary><p class="lang-de">Nein. Pro ist ein einmaliger Kauf und bleibt dauerhaft freigeschaltet.</p><p class="lang-en">No. Pro is a single lifetime purchase.</p></details>
+        <details><summary><span class="lang-de">Kann ich Drumloom kostenlos nutzen?</span><span class="lang-en">Can I use Drumloom for free?</span></summary><p class="lang-de">Ja. Das Standard-Metronom und ein sinnvoller Übungskern sind dauerhaft kostenlos.</p><p class="lang-en">Yes. The standard metronome and a useful practice core remain free.</p></details>
+        <details><summary><span class="lang-de">Funktioniert Audio bei gesperrtem Bildschirm?</span><span class="lang-en">Does audio work with the screen locked?</span></summary><p class="lang-de">Ja. Routinen und Playback laufen im Hintergrund weiter; die Lockscreen-Anzeige zeigt den aktuellen Block.</p><p class="lang-en">Yes. Routines and playback continue in the background while the Lock Screen shows the current block.</p></details>
+        <details><summary><span class="lang-de">Kann ich eigene Übungen bauen?</span><span class="lang-en">Can I build my own exercises?</span></summary><p class="lang-de">Ja. Im Pattern Builder baust du R/L- und Drumset-Patterns als Step-Sequenz und speicherst sie direkt als Übung.</p><p class="lang-en">Yes. The Pattern Builder turns R/L and drum-kit steps into saved custom exercises.</p></details>
+      </div>
+    </section>
+
+    <section class="legal-section wrap" id="privacy">
+      <p class="eyebrow lang-de">Rechtliches</p><p class="eyebrow lang-en">Legal</p>
+      <h2 class="lang-de">Datenschutz &amp; Impressum</h2><h2 class="lang-en">Privacy &amp; legal notice</h2>
+      <div class="legal-grid">
+        <article class="legal-card">
+          <h3 class="lang-de">Datenschutz</h3><h3 class="lang-en">Privacy</h3>
+          <p class="lang-de">Drumloom verwendet auf dieser Website keine Cookies, keine Nutzerkonten, keine Werbung und keine externen Analyse- oder Trackingdienste. Beim Aufruf können technisch notwendige Server-Logdaten durch den Hostinganbieter verarbeitet werden.</p>
+          <p class="lang-en">This website uses no cookies, user accounts, advertising, third-party analytics or tracking. The hosting provider may process technically necessary server log data when the site is accessed.</p>
+          <p class="lang-de">App-Daten wie Routinen, Favoriten und Übungslogs bleiben lokal beziehungsweise in deinem privaten iCloud-Container. Apple verarbeitet App-Store-Käufe nach den eigenen Datenschutzbestimmungen.</p>
+          <p class="lang-en">App data such as routines, favorites and practice logs stays local or in your private iCloud container. Apple processes App Store purchases under its own privacy terms.</p>
+          <p><span class="lang-de">Kontakt:</span><span class="lang-en">Contact:</span> <a class="support-email config-value" href="#"></a></p>
+        </article>
+        <article class="legal-card" id="legal">
+          <h3 class="lang-de">Impressum</h3><h3 class="lang-en">Legal notice</h3>
+          <p><strong class="lang-de">Anbieter</strong><strong class="lang-en">Provider</strong><br><span class="legal-name config-value"></span><br><span class="legal-address config-value"></span></p>
+          <p><strong class="lang-de">Kontakt</strong><strong class="lang-en">Contact</strong><br><a class="support-email config-value" href="#"></a></p>
+          <p class="lang-de">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: <span class="legal-name config-value"></span>, Anschrift wie oben.</p>
+          <p class="lang-en">Responsible for editorial content: <span class="legal-name config-value"></span>, address as stated above.</p>
+          <p class="lang-de">Hinweis: Name und ladungsfähige Anschrift müssen vor der öffentlichen Veröffentlichung im Konfigurationsblock dieser Datei ergänzt werden.</p>
+          <p class="lang-en">Note: Add the legal name and serviceable address in this file's configuration block before public release.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing">
+      <img src="./public/app-icon.png" alt="Drumloom App Icon">
+      <p class="eyebrow"><span class="dot"></span><span class="lang-de">Das Übungsinstrument für Drummer</span><span class="lang-en">The practice instrument for drummers</span></p>
+      <h2>Practice like <em>timing matters.</em></h2>
+      <a class="button button-primary app-store-link" href="#"><span class="lang-de">Im App Store laden</span><span class="lang-en">Download on the App Store</span> ↗</a>
+      <p class="lang-de">Kein Abo. Niemals.</p><p class="lang-en">No subscription. Ever.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <a class="brand" href="#top"><img src="./public/brand-mark.png" alt=""><strong>DRUMLOOM</strong></a>
+    <p>Made for the hours nobody sees.</p>
+    <div class="links"><a href="#privacy"><span class="lang-de">Datenschutz</span><span class="lang-en">Privacy</span></a><a href="#legal"><span class="lang-de">Impressum</span><span class="lang-en">Legal notice</span></a><a class="support-email" href="#">Support</a></div>
+    <small>© 2026 Drumloom</small>
+  </footer>
+
+  <script>
+    /*
+      Vor dem Launch nur diese Werte ersetzen.
+      The page works directly from disk; no server or build step is required.
+    */
+    const SITE_CONFIG = {
+      appStoreUrl: "https://apps.apple.com/app/idREPLACE_ME",
+      supportEmail: "support@drumloom.app",
+      legalName: "[Rechtlichen Namen ergänzen]",
+      legalAddress: "[Ladungsfähige Anschrift ergänzen]"
+    };
+
+    const body = document.body;
+    const deButton = document.getElementById("language-de");
+    const enButton = document.getElementById("language-en");
+
+    function setLanguage(language) {
+      body.dataset.language = language;
+      document.documentElement.lang = language;
+      deButton.classList.toggle("active", language === "de");
+      enButton.classList.toggle("active", language === "en");
+      deButton.setAttribute("aria-pressed", String(language === "de"));
+      enButton.setAttribute("aria-pressed", String(language === "en"));
+      try { localStorage.setItem("drumloom-language", language); } catch (_) {}
+    }
+
+    deButton.addEventListener("click", () => setLanguage("de"));
+    enButton.addEventListener("click", () => setLanguage("en"));
+
+    document.querySelectorAll(".app-store-link").forEach(link => {
+      link.href = SITE_CONFIG.appStoreUrl;
+    });
+    document.querySelectorAll(".support-email").forEach(link => {
+      link.textContent = SITE_CONFIG.supportEmail;
+      link.href = `mailto:${SITE_CONFIG.supportEmail}`;
+    });
+    document.querySelectorAll(".legal-name").forEach(node => {
+      node.textContent = SITE_CONFIG.legalName;
+    });
+    document.querySelectorAll(".legal-address").forEach(node => {
+      node.textContent = SITE_CONFIG.legalAddress;
+    });
+
+    let preferredLanguage = "de";
+    try {
+      preferredLanguage = localStorage.getItem("drumloom-language")
+        || (navigator.language.toLowerCase().startsWith("de") ? "de" : "en");
+    } catch (_) {}
+    setLanguage(preferredLanguage);
+  </script>
+</body>
+</html>

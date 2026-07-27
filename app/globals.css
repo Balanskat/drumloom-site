@@ -1656,3 +1656,380 @@ footer a:hover {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* 2026 product photography layer — every screen below is captured from the app. */
+.hero-visual {
+  min-height: 720px;
+  perspective: 1400px;
+}
+
+.hero-device,
+.device-window,
+.product-shot,
+.craft-device {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #070708;
+  box-shadow:
+    0 38px 100px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.hero-device {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: min(71%, 350px);
+  padding: 7px;
+  border-radius: 58px;
+  transform-origin: 50% 90%;
+}
+
+.hero-device img,
+.device-window img,
+.product-shot img,
+.craft-device img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-device img {
+  border-radius: 51px;
+}
+
+.hero-device-main {
+  z-index: 3;
+  transform: translateX(-42%) rotateY(-5deg) rotateZ(2deg);
+}
+
+.hero-device-back {
+  z-index: 1;
+  top: 55px;
+  opacity: 0.48;
+  filter: saturate(0.75) brightness(0.76);
+  transform: translateX(-84%) rotateY(16deg) rotateZ(-8deg) scale(0.91);
+}
+
+.hero-device-main::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.11), transparent 22%);
+  content: "";
+  pointer-events: none;
+}
+
+.card-timing {
+  top: 20%;
+  left: -5%;
+}
+
+.card-session {
+  right: -3%;
+  bottom: 14%;
+}
+
+.app-showcase {
+  width: min(calc(100% - 40px), var(--max));
+  margin: 0 auto;
+  padding: 130px 0 150px;
+  border-top: 1px solid var(--line);
+}
+
+.showcase-head {
+  display: grid;
+  grid-template-columns: 1fr 0.65fr;
+  align-items: end;
+  gap: 70px;
+  margin-bottom: 70px;
+}
+
+.showcase-head h2,
+.craft-copy h2 {
+  max-width: 850px;
+  margin: 0;
+  font-size: clamp(44px, 5.4vw, 78px);
+  font-weight: 590;
+  letter-spacing: -0.058em;
+  line-height: 0.98;
+}
+
+.showcase-head > p,
+.craft-copy > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.screen-reel {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: 13px;
+  perspective: 1600px;
+}
+
+.screen-shot {
+  min-width: 0;
+  margin: 0;
+  transform: translateY(18px) rotateY(3deg);
+}
+
+.screen-shot:nth-child(2n) {
+  transform: translateY(-16px) rotateY(-3deg);
+}
+
+.screen-shot-featured {
+  z-index: 2;
+  transform: translateY(-28px) scale(1.055);
+}
+
+.device-window {
+  padding: 5px;
+  border-radius: 32px;
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.screen-shot:hover .device-window {
+  border-color: rgba(255, 159, 26, 0.48);
+  box-shadow:
+    0 46px 120px rgba(0, 0, 0, 0.62),
+    0 0 0 1px rgba(255, 159, 26, 0.14);
+  transform: translateY(-10px);
+}
+
+.device-window img {
+  border-radius: 27px;
+}
+
+.screen-shot figcaption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 17px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.screen-shot figcaption span {
+  color: var(--orange);
+  font: 700 10px/1 ui-monospace, monospace;
+}
+
+.product-shot {
+  width: min(100%, 395px);
+  max-height: 720px;
+  justify-self: center;
+  padding: 6px;
+  border-radius: 52px;
+}
+
+.product-shot img {
+  border-radius: 46px;
+}
+
+.product-shot-library {
+  transform: rotate(2deg);
+}
+
+.product-shot-practice {
+  transform: rotate(-2deg);
+}
+
+.craft-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(calc(100% - 40px), var(--max));
+  gap: 16px;
+  margin: 0 auto;
+  padding: 0 0 150px;
+}
+
+.craft-card {
+  position: relative;
+  min-height: 780px;
+  overflow: hidden;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 159, 26, 0.13), transparent 34rem),
+    var(--panel);
+}
+
+.craft-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+}
+
+.craft-copy h2 {
+  font-size: clamp(38px, 4.2vw, 58px);
+}
+
+.craft-copy > p {
+  margin-top: 24px;
+  font-size: 16px;
+}
+
+.craft-device {
+  position: absolute;
+  right: -4%;
+  bottom: -47%;
+  width: min(68%, 390px);
+  padding: 6px;
+  border-radius: 50px;
+  transform: rotate(4deg);
+}
+
+.craft-device img {
+  border-radius: 44px;
+}
+
+.craft-tuner {
+  background:
+    radial-gradient(circle at 20% 12%, rgba(255, 190, 96, 0.11), transparent 30rem),
+    #121214;
+}
+
+.craft-tuner .craft-device {
+  right: auto;
+  left: -2%;
+  transform: rotate(-3deg);
+}
+
+@supports (animation-timeline: view()) {
+  .screen-shot,
+  .product-shot,
+  .craft-card {
+    animation: product-rise both linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 35%;
+  }
+
+  @keyframes product-rise {
+    from {
+      opacity: 0;
+      translate: 0 44px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+}
+
+@media (max-width: 980px) {
+  .hero-device {
+    width: min(65%, 360px);
+  }
+
+  .showcase-head {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .screen-reel {
+    grid-template-columns: repeat(5, 210px);
+    margin-inline: -20px;
+    padding: 28px 20px 40px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .screen-reel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .screen-shot {
+    scroll-snap-align: center;
+  }
+
+  .craft-section {
+    grid-template-columns: 1fr;
+  }
+
+  .craft-card {
+    min-height: 720px;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-visual {
+    min-height: 650px;
+  }
+
+  .hero-device {
+    width: min(70%, 315px);
+  }
+
+  .hero-device-main {
+    transform: translateX(-45%) rotateZ(2deg);
+  }
+
+  .hero-device-back {
+    transform: translateX(-78%) rotateZ(-8deg) scale(0.9);
+  }
+
+  .card-timing {
+    top: 16%;
+    left: 0;
+  }
+
+  .card-session {
+    right: 0;
+    bottom: 12%;
+  }
+
+  .app-showcase {
+    width: min(calc(100% - 28px), var(--max));
+    padding: 94px 0 110px;
+  }
+
+  .showcase-head {
+    margin-bottom: 40px;
+  }
+
+  .showcase-head h2,
+  .craft-copy h2 {
+    font-size: 43px;
+  }
+
+  .screen-reel {
+    grid-template-columns: repeat(5, 226px);
+    margin-inline: -14px;
+    padding-inline: 14px;
+  }
+
+  .craft-section {
+    width: min(calc(100% - 28px), var(--max));
+    padding-bottom: 100px;
+  }
+
+  .craft-card {
+    min-height: 690px;
+    padding: 26px;
+    border-radius: 28px;
+  }
+
+  .craft-device {
+    right: -5%;
+    bottom: -37%;
+    width: min(76%, 340px);
+  }
+
+  .product-shot {
+    width: min(82vw, 340px);
+    border-radius: 45px;
+  }
+
+  .product-shot img {
+    border-radius: 39px;
+  }
+}

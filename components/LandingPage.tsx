@@ -9,8 +9,8 @@ type Language = "de" | "en";
 
 const copy = {
   de: {
-    nav: ["Instrument", "Bibliothek", "Routinen", "Pro"],
-    navIds: ["instrument", "library", "routines", "pro"],
+    nav: ["App", "Bibliothek", "Erstellen", "Pro"],
+    navIds: ["app", "library", "create", "pro"],
     download: "Im App Store laden",
     eyebrow: "Das Übungsinstrument für Drummer",
     heroTitleA: "Practice like",
@@ -26,6 +26,11 @@ const copy = {
     sectionTitle: "Alles, was eine gute Session braucht.",
     sectionBody:
       "Öffnen, Tempo setzen, spielen. Die wichtigen Dinge bleiben im Blick; Details warten dort, wo du sie brauchst.",
+    galleryEyebrow: "Echte App. Keine Render-Fantasie.",
+    galleryTitle: "Fünf Werkzeuge. Ein ruhiger Flow.",
+    galleryBody:
+      "Metronom, eigener Content, Practice, Bibliothek und Drum-Tuner greifen ineinander – ohne dass sich die App wie ein überladenes Studio-Menü anfühlt.",
+    screenLabels: ["Metronom", "Erstellen", "Bibliothek", "Üben", "Drum-Tuner"],
     libraryEyebrow: "Groß, aber nicht chaotisch",
     libraryTitle: "1.267 Übungen. Klar sortiert.",
     libraryBody:
@@ -38,6 +43,14 @@ const copy = {
     routineTitle: "Du spielst. Drumloom führt.",
     routineBody:
       "Count-in, Tempo-Steps, Pausen und Blockwechsel laufen automatisch – nie mitten im Takt. Mit Lockscreen-Anzeige und Sprachansagen.",
+    createEyebrow: "Deine Ideen werden spielbar",
+    createTitle: "Pattern bauen. Loops verbinden. Speichern.",
+    createBody:
+      "Im Step-Sequencer entstehen eigene Stickings und Drumset-Patterns. Im Flow-Builder werden Grooves, Fills und Rudiments zu langen, taktgenauen Formen.",
+    tunerEyebrow: "Drums stimmen, ohne Ratespiel",
+    tunerTitle: "Pitch, Lugs, Felle und Spektrum.",
+    tunerBody:
+      "Der Drum-Tuner führt vom Grundton bis zur einzelnen Stimmschraube und speichert Setups für dein komplettes Kit.",
     features: [
       ["Metronom", "Großer Puls, Tap Tempo, Unterteilungen und Akzente ohne visuelles Rauschen."],
       ["Notation + Sound", "Cursor-synchrones Playback mit Ghost Notes, Flams, Swing und separaten Mixern."],
@@ -81,8 +94,8 @@ const copy = {
     privacy: "Datenschutz"
   },
   en: {
-    nav: ["Instrument", "Library", "Routines", "Pro"],
-    navIds: ["instrument", "library", "routines", "pro"],
+    nav: ["App", "Library", "Create", "Pro"],
+    navIds: ["app", "library", "create", "pro"],
     download: "Download on the App Store",
     eyebrow: "The practice instrument for drummers",
     heroTitleA: "Practice like",
@@ -98,6 +111,11 @@ const copy = {
     sectionTitle: "Everything a focused session needs.",
     sectionBody:
       "Open it, set the tempo and play. The essentials stay visible; deeper controls are there when you need them.",
+    galleryEyebrow: "The real app. No concept renders.",
+    galleryTitle: "Five tools. One calm flow.",
+    galleryBody:
+      "Metronome, creation, practice, library and drum tuning work as one system without turning the app into a studio menu maze.",
+    screenLabels: ["Metronome", "Create", "Library", "Practice", "Drum tuner"],
     libraryEyebrow: "Deep, never chaotic",
     libraryTitle: "1,267 exercises. Clearly organized.",
     libraryBody:
@@ -110,6 +128,14 @@ const copy = {
     routineTitle: "You play. Drumloom leads.",
     routineBody:
       "Count-ins, tempo steps, rests and block changes run automatically – never halfway through a bar. With voice cues and a Lock Screen view.",
+    createEyebrow: "Turn ideas into playable material",
+    createTitle: "Build patterns. Connect loops. Save.",
+    createBody:
+      "Use the step sequencer for custom stickings and drum-kit patterns, then connect grooves, fills and rudiments into long, bar-accurate flows.",
+    tunerEyebrow: "Tune drums without the guesswork",
+    tunerTitle: "Pitch, lugs, heads and spectrum.",
+    tunerBody:
+      "The drum tuner guides you from the fundamental to every lug and saves setups for your complete kit.",
     features: [
       ["Metronome", "Large pulse, tap tempo, subdivisions and accents without visual noise."],
       ["Notation + sound", "Cursor-synced playback with ghosts, flams, swing and separate mix levels."],
@@ -206,6 +232,13 @@ function MetronomeInstrument({ language }: { language: Language }) {
 export default function LandingPage() {
   const [language, setLanguage] = useState<Language>("de");
   const t = copy[language];
+  const screens = [
+    { src: "/app-metronome.jpg", label: t.screenLabels[0] },
+    { src: "/app-create.jpg", label: t.screenLabels[1] },
+    { src: "/app-library.jpg", label: t.screenLabels[2] },
+    { src: "/app-practice.jpg", label: t.screenLabels[3] },
+    { src: "/app-tuner.jpg", label: t.screenLabels[4] }
+  ];
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -295,9 +328,22 @@ export default function LandingPage() {
           <div className="hero-visual">
             <span className="orb orb-one" />
             <span className="orb orb-two" />
-            <div className="phone-frame">
-              <div className="phone-island" />
-              <MetronomeInstrument language={language} />
+            <div className="hero-device hero-device-main">
+              <img
+                src="/app-metronome.jpg"
+                alt={`${t.screenLabels[0]} – Drumloom App`}
+                width="1206"
+                height="2622"
+                fetchPriority="high"
+              />
+            </div>
+            <div className="hero-device hero-device-back">
+              <img
+                src="/app-library.jpg"
+                alt={`${t.screenLabels[2]} – Drumloom App`}
+                width="1206"
+                height="2622"
+              />
             </div>
             <div className="floating-card card-timing">
               <span className="metric-icon">±</span>
@@ -322,6 +368,35 @@ export default function LandingPage() {
             <h2>{t.sectionTitle}</h2>
           </div>
           <p>{t.sectionBody}</p>
+        </section>
+
+        <section className="app-showcase" id="app">
+          <div className="showcase-head">
+            <div>
+              <p className="eyebrow">{t.galleryEyebrow}</p>
+              <h2>{t.galleryTitle}</h2>
+            </div>
+            <p>{t.galleryBody}</p>
+          </div>
+          <div className="screen-reel" aria-label={t.galleryTitle}>
+            {screens.map((screen, index) => (
+              <figure className={index === 2 ? "screen-shot screen-shot-featured" : "screen-shot"} key={screen.src}>
+                <div className="device-window">
+                  <img
+                    src={screen.src}
+                    alt={`${screen.label} – echter App-Screenshot`}
+                    width="1206"
+                    height="2622"
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+                <figcaption>
+                  <span>0{index + 1}</span>
+                  {screen.label}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </section>
 
         <section className="feature-grid" id="instrument">
@@ -389,48 +464,26 @@ export default function LandingPage() {
               )}
             </div>
           </div>
-          <div className="library-demo">
-            <div className="demo-header">
-              <div>
-                <small>GROOVES / MODERN</small>
-                <strong>{t.grooveTitle}</strong>
-              </div>
-              <button type="button" aria-label={t.shuffle}>
-                <Spark /> {t.shuffle}
-              </button>
-            </div>
-            <StaffPreview />
-            <div className="demo-meta">
-              <span>{t.grooveMeta}</span>
-              <span>{t.levels}</span>
-              <button type="button" aria-label="Vorschau abspielen">
-                <Play />
-              </button>
-            </div>
+          <div className="product-shot product-shot-library">
+            <img
+              src="/app-library.jpg"
+              alt={`${t.screenLabels[2]} – echter App-Screenshot`}
+              width="1206"
+              height="2622"
+              loading="lazy"
+            />
           </div>
         </section>
 
         <section className="routine-section section-grid" id="routines">
-          <div className="routine-board">
-            <div className="routine-board-head">
-              <span>DAILY 20</span>
-              <strong>20:00</strong>
-            </div>
-            <div className="routine-list">
-              {t.routineSteps.map(([number, title, detail, duration], index) => (
-                <div className={index === 1 ? "routine-active" : ""} key={number}>
-                  <span>{number}</span>
-                  <p>
-                    <strong>{title}</strong>
-                    <small>{detail}</small>
-                  </p>
-                  <time>{duration}</time>
-                </div>
-              ))}
-            </div>
-            <div className="routine-progress">
-              <span />
-            </div>
+          <div className="product-shot product-shot-practice">
+            <img
+              src="/app-practice.jpg"
+              alt={`${t.screenLabels[3]} – echter App-Screenshot`}
+              width="1206"
+              height="2622"
+              loading="lazy"
+            />
           </div>
           <div className="routine-copy">
             <p className="eyebrow">{t.routineEyebrow}</p>
@@ -443,6 +496,53 @@ export default function LandingPage() {
               <span>VOICE CUES</span>
             </div>
           </div>
+        </section>
+
+        <section className="craft-section" id="create">
+          <article className="craft-card craft-create">
+            <div className="craft-copy">
+              <p className="eyebrow">{t.createEyebrow}</p>
+              <h2>{t.createTitle}</h2>
+              <p>{t.createBody}</p>
+              <div className="routine-badges">
+                <span>STEP SEQUENCER</span>
+                <span>FLOW BUILDER</span>
+                <span>DAILY STICKING</span>
+              </div>
+            </div>
+            <div className="craft-device">
+              <img
+                src="/app-create.jpg"
+                alt={`${t.screenLabels[1]} – echter App-Screenshot`}
+                width="1206"
+                height="2622"
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <article className="craft-card craft-tuner">
+            <div className="craft-copy">
+              <p className="eyebrow">{t.tunerEyebrow}</p>
+              <h2>{t.tunerTitle}</h2>
+              <p>{t.tunerBody}</p>
+              <div className="routine-badges">
+                <span>PITCH</span>
+                <span>LUGS</span>
+                <span>HEADS</span>
+                <span>SPECTRUM</span>
+              </div>
+            </div>
+            <div className="craft-device">
+              <img
+                src="/app-tuner.jpg"
+                alt={`${t.screenLabels[4]} – echter App-Screenshot`}
+                width="1206"
+                height="2622"
+                loading="lazy"
+              />
+            </div>
+          </article>
         </section>
 
         <section className="pricing-section" id="pro">
@@ -531,4 +631,3 @@ export default function LandingPage() {
     </>
   );
 }
-

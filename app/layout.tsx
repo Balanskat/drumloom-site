@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://drumloom-practice.sites.openai.com"),
+  metadataBase: new URL("https://drumloom-practice.haid-creative.chatgpt.site"),
   title: {
     default: "Drumloom — Drum Practice, Grooves & Metronome",
     template: "%s · Drumloom"
@@ -27,14 +27,21 @@ export const metadata: Metadata = {
     title: "Drumloom — Practice like timing matters.",
     description:
       "Metronome, notation, playback and routines in one focused practice instrument.",
-    images: [{ url: "/app-icon.png", width: 1024, height: 1024 }]
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Drumloom Metronom und Übungsbibliothek auf zwei iPhones"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: "Drumloom — Practice like timing matters.",
     description:
       "Metronome, notation, playback and routines in one focused practice instrument.",
-    images: ["/app-icon.png"]
+    images: ["/og.png"]
   },
   icons: {
     icon: "/brand-mark.png",
@@ -60,4 +67,3 @@ export default function RootLayout({
     </html>
   );
 }
-
