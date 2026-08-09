@@ -1335,8 +1335,7 @@ footer a:hover {
   color: var(--orange);
 }
 
-.legal-contact,
-.legal-warning {
+.legal-contact {
   margin-top: 52px;
   padding: 20px;
   border: 1px solid var(--line);
@@ -1345,8 +1344,19 @@ footer a:hover {
   background: var(--panel);
 }
 
-.legal-warning {
-  border-color: rgba(255, 159, 26, 0.3);
+/* The § 5 DDG name and postal address: a disclosure that has to be present and
+   readable, but never a headline. Kept small, dim and unboxed. */
+.legal-page .legal-identity {
+  margin-top: 26px;
+  color: var(--faint);
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.legal-page .legal-identity a {
+  color: var(--faint);
+  text-decoration: underline;
 }
 
 .back-link {

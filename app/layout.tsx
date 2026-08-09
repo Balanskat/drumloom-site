@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://drumloom-practice.haid-creative.chatgpt.site"),
+  metadataBase: new URL(siteConfig.siteUrl),
   title: {
     default: "Drumloom — Drum Practice, Grooves & Metronome",
     template: "%s · Drumloom"
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
       "Metronome, notation, playback and routines in one focused practice instrument.",
     images: [
       {
-        url: "/og.png",
+        url: siteConfig.asset("/og.png"),
         width: 1200,
         height: 630,
         alt: "Drumloom Metronom und Übungsbibliothek auf zwei iPhones"
@@ -41,11 +42,11 @@ export const metadata: Metadata = {
     title: "Drumloom — Practice like timing matters.",
     description:
       "Metronome, notation, playback and routines in one focused practice instrument.",
-    images: ["/og.png"]
+    images: [siteConfig.asset("/og.png")]
   },
   icons: {
-    icon: "/brand-mark.png",
-    apple: "/app-icon.png"
+    icon: siteConfig.asset("/brand-mark.png"),
+    apple: siteConfig.asset("/app-icon.png")
   }
 };
 

@@ -233,11 +233,11 @@ export default function LandingPage() {
   const [language, setLanguage] = useState<Language>("de");
   const t = copy[language];
   const screens = [
-    { src: "/app-metronome.jpg", label: t.screenLabels[0] },
-    { src: "/app-create.jpg", label: t.screenLabels[1] },
-    { src: "/app-library.jpg", label: t.screenLabels[2] },
-    { src: "/app-practice.jpg", label: t.screenLabels[3] },
-    { src: "/app-tuner.jpg", label: t.screenLabels[4] }
+    { src: siteConfig.asset("/app-metronome.jpg"), label: t.screenLabels[0] },
+    { src: siteConfig.asset("/app-create.jpg"), label: t.screenLabels[1] },
+    { src: siteConfig.asset("/app-library.jpg"), label: t.screenLabels[2] },
+    { src: siteConfig.asset("/app-practice.jpg"), label: t.screenLabels[3] },
+    { src: siteConfig.asset("/app-tuner.jpg"), label: t.screenLabels[4] }
   ];
 
   useEffect(() => {
@@ -251,7 +251,7 @@ export default function LandingPage() {
       </a>
       <header className="site-header">
         <Link className="brand" href="/" aria-label="Drumloom Startseite">
-          <img src="/brand-mark.png" alt="" width="42" height="42" />
+          <img src={siteConfig.asset("/brand-mark.png")} alt="" width="42" height="42" />
           <span>DRUMLOOM</span>
         </Link>
         <nav aria-label="Hauptnavigation">
@@ -301,7 +301,7 @@ export default function LandingPage() {
             <p className="hero-body">{t.heroBody}</p>
             <div className="hero-actions">
               <a className="button button-primary" href={siteConfig.appStoreUrl}>
-                <img src="/brand-mark.png" alt="" width="28" height="28" />
+                <img src={siteConfig.asset("/brand-mark.png")} alt="" width="28" height="28" />
                 <span>
                   <small>{language === "de" ? "JETZT LADEN" : "DOWNLOAD NOW"}</small>
                   {t.download}
@@ -330,7 +330,7 @@ export default function LandingPage() {
             <span className="orb orb-two" />
             <div className="hero-device hero-device-main">
               <img
-                src="/app-metronome.jpg"
+                src={siteConfig.asset("/app-metronome.jpg")}
                 alt={`${t.screenLabels[0]} – Drumloom App`}
                 width="1206"
                 height="2622"
@@ -339,7 +339,7 @@ export default function LandingPage() {
             </div>
             <div className="hero-device hero-device-back">
               <img
-                src="/app-library.jpg"
+                src={siteConfig.asset("/app-library.jpg")}
                 alt={`${t.screenLabels[2]} – Drumloom App`}
                 width="1206"
                 height="2622"
@@ -466,7 +466,7 @@ export default function LandingPage() {
           </div>
           <div className="product-shot product-shot-library">
             <img
-              src="/app-library.jpg"
+              src={siteConfig.asset("/app-library.jpg")}
               alt={`${t.screenLabels[2]} – echter App-Screenshot`}
               width="1206"
               height="2622"
@@ -478,7 +478,7 @@ export default function LandingPage() {
         <section className="routine-section section-grid" id="routines">
           <div className="product-shot product-shot-practice">
             <img
-              src="/app-practice.jpg"
+              src={siteConfig.asset("/app-practice.jpg")}
               alt={`${t.screenLabels[3]} – echter App-Screenshot`}
               width="1206"
               height="2622"
@@ -512,7 +512,7 @@ export default function LandingPage() {
             </div>
             <div className="craft-device">
               <img
-                src="/app-create.jpg"
+                src={siteConfig.asset("/app-create.jpg")}
                 alt={`${t.screenLabels[1]} – echter App-Screenshot`}
                 width="1206"
                 height="2622"
@@ -535,7 +535,7 @@ export default function LandingPage() {
             </div>
             <div className="craft-device">
               <img
-                src="/app-tuner.jpg"
+                src={siteConfig.asset("/app-tuner.jpg")}
                 alt={`${t.screenLabels[4]} – echter App-Screenshot`}
                 width="1206"
                 height="2622"
@@ -577,7 +577,7 @@ export default function LandingPage() {
         </section>
 
         <section className="privacy-strip">
-          <img src="/brand-mark.png" alt="" width="68" height="68" />
+          <img src={siteConfig.asset("/brand-mark.png")} alt="" width="68" height="68" />
           <div>
             <h2>{t.privacyTitle}</h2>
             <p>{t.privacyBody}</p>
@@ -602,7 +602,7 @@ export default function LandingPage() {
         </section>
 
         <section className="closing" id="download">
-          <img src="/app-icon.png" alt="Drumloom App Icon" width="124" height="124" />
+          <img src={siteConfig.asset("/app-icon.png")} alt="Drumloom App Icon" width="124" height="124" />
           <p className="eyebrow">{t.eyebrow}</p>
           <h2>
             {t.heroTitleA} <em>{t.heroTitleB}</em>
@@ -617,7 +617,7 @@ export default function LandingPage() {
 
       <footer>
         <Link className="brand" href="/">
-          <img src="/brand-mark.png" alt="" width="38" height="38" />
+          <img src={siteConfig.asset("/brand-mark.png")} alt="" width="38" height="38" />
           <span>DRUMLOOM</span>
         </Link>
         <p>{t.footerLine}</p>
