@@ -913,6 +913,110 @@ p {
   border-top: 1px solid var(--line);
 }
 
+.rudiment-loop-section {
+  align-items: center;
+  gap: 80px;
+  padding: 132px 0;
+  border-top: 1px solid var(--line);
+}
+
+.rudiment-loop-copy {
+  max-width: 580px;
+}
+
+.rudiment-loop-copy h2 {
+  max-width: 560px;
+  margin: 0;
+  font-size: clamp(48px, 5.2vw, 78px);
+  font-weight: 590;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.rudiment-loop-copy > p:not(.eyebrow) {
+  max-width: 520px;
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.rudiment-loop-copy .routine-badges {
+  margin-top: 32px;
+}
+
+.rudiment-loop-frame {
+  width: min(100%, 470px);
+  justify-self: center;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid rgba(127, 169, 106, 0.4);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 75% 0, rgba(127, 169, 106, 0.18), transparent 44%),
+    #080909;
+  box-shadow: 0 38px 100px rgba(0, 0, 0, 0.46), 0 0 0 1px rgba(127, 169, 106, 0.08);
+}
+
+.rudiment-loop-screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  background: #f7f5ef;
+}
+
+.rudiment-loop-screen .app-screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.rudiment-playhead {
+  position: absolute;
+  top: 25.5%;
+  bottom: 53%;
+  left: 8%;
+  width: 3px;
+  border-radius: 99px;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(127, 169, 106, 0.13), 0 0 24px rgba(127, 169, 106, 0.82);
+  animation: rudiment-playhead 3.4s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes rudiment-playhead {
+  0%, 8% { left: 8%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  94%, 100% { left: 91%; opacity: 0; }
+}
+
+.rudiment-loop-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 6px 4px;
+  color: var(--muted);
+  font: 700 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+}
+
+.rudiment-loop-meta span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-2);
+}
+
+.loop-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(127, 169, 106, 0.13);
+}
+
 .library-copy > p,
 .routine-copy > p {
   max-width: 550px;
@@ -2513,6 +2617,21 @@ footer a:hover {
   .advanced-section {
     width: min(calc(100% - 28px), var(--max));
     padding-bottom: 100px;
+  }
+
+  .rudiment-loop-section {
+    grid-template-columns: 1fr;
+    width: min(calc(100% - 28px), var(--max));
+    gap: 46px;
+    padding: 96px 0;
+  }
+
+  .rudiment-loop-copy h2 {
+    font-size: 43px;
+  }
+
+  .rudiment-loop-frame {
+    width: min(88vw, 390px);
   }
 
   .advanced-card {

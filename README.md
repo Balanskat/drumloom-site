@@ -9,6 +9,11 @@ notation, and the Beat Builder image is captured from the actual Kick & Snare
 foundation step, so the patterns shown on the page are real app content rather
 than a CSS mockup.
 
+The Rudiments section also includes a lightweight looping preview: it keeps the
+real Reverse Paradiddle screen visible and moves a playback head across the
+notation, so the exercise reads as a repeating bar without adding a heavy
+video download. It is intentionally muted and visual-only for the launch page.
+
 It is prepared for a GitHub Pages project site at
 `https://balanskat.github.io/drumloom-site/`. GitHub Pages is intentionally not
 enabled yet, and the deployment workflow runs only when triggered manually.

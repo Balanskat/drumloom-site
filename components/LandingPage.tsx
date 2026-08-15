@@ -27,6 +27,10 @@ const copy = {
     libraryTitle: "1,267 exercises. Clearly organized.",
     libraryBody:
       "Grooves, fills, rudiments, stickings, left-hand and kick patterns – with readable previews instead of mystery titles.",
+    rudimentLoopEyebrow: "Real exercise · loop preview",
+    rudimentLoopTitle: "See the sticking. Hear the shape.",
+    rudimentLoopBody:
+      "A Reverse Paradiddle stays concrete: the notation, the sticking and the playback controls are all visible in the same exercise. Let the bar loop while you work the hands.",
     shuffle: "Fresh picks",
     levels: "3 levels",
     grooveTitle: "Modern Pocket",
@@ -258,6 +262,30 @@ export default function LandingPage() {
           </div>
           <div className="product-shot product-shot-library">
             <AppScreenshot src="library.png" alt="Drumloom Library screen with exercise categories" />
+          </div>
+        </section>
+
+        <section className="rudiment-loop-section section-grid" aria-label="Rudiment loop preview">
+          <div className="rudiment-loop-copy">
+            <p className="eyebrow"><span className="live-dot" />{t.rudimentLoopEyebrow}</p>
+            <h2>{t.rudimentLoopTitle}</h2>
+            <p>{t.rudimentLoopBody}</p>
+            <div className="routine-badges">
+              <span>REVERSE PARADIDDLE</span>
+              <span>1 BAR</span>
+              <span>85 BPM</span>
+              <span>LOOP</span>
+            </div>
+          </div>
+          <div className="rudiment-loop-frame" role="img" aria-label="Looping visual preview of the Reverse Paradiddle exercise in Drumloom">
+            <div className="rudiment-loop-screen">
+              <AppScreenshot src="rudiment.png" alt="" loading="lazy" />
+              <span className="rudiment-playhead" aria-hidden="true" />
+            </div>
+            <div className="rudiment-loop-meta">
+              <span><i className="loop-status-dot" /> PLAYBACK LOOP</span>
+              <span>RRL RLL · RRL RLL</span>
+            </div>
           </div>
         </section>
 
