@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         url: siteConfig.absoluteAsset("/og.png"),
         width: 1200,
         height: 630,
-        alt: "Zwei dunkle Smartphones mit abstraktem Metronom und Drum-Pattern im orangefarbenen Studiolicht"
+        alt: "Zwei dunkle Smartphones mit abstraktem Metronom und Drum-Pattern im grünen Drumloom-Studiolicht"
       }
     ]
   },
