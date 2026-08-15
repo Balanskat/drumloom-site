@@ -26,17 +26,22 @@ The generated files are written to `out/` and are ignored by Git.
 ## Release checklist
 
 The deployment workflow is manual, so pushing to `main` does not publish the
-site by itself.
+site by itself. The ready-to-use workflow is stored at
+`deployment/deploy-pages.yml` because the current repository token cannot
+create files inside `.github/workflows`.
 
-1. In App Store Connect, copy Drumloom's numeric Apple ID and form the public
+1. In GitHub, open `deployment/deploy-pages.yml`, copy its contents, choose
+   **Add file → Create new file**, and save it as
+   `.github/workflows/deploy-pages.yml` on `main`. Do not run it yet.
+2. In App Store Connect, copy Drumloom's numeric Apple ID and form the public
    URL `https://apps.apple.com/app/idAPPLE_ID`.
-2. In the GitHub repository, open **Settings → Secrets and variables → Actions
+3. In the GitHub repository, open **Settings → Secrets and variables → Actions
    → Variables** and create `APP_STORE_URL` with that full URL. Until this is
    set, the site safely shows a non-clickable “Coming soon” button.
-3. Open **Settings → Pages** and choose **GitHub Actions** as the source.
-4. Open **Actions → Deploy GitHub Pages → Run workflow** and run it from
+4. Open **Settings → Pages** and choose **GitHub Actions** as the source.
+5. Open **Actions → Deploy GitHub Pages → Run workflow** and run it from
    `main`. This is the first step that publishes the site.
-5. Verify the home page, `/privacy/` and `/legal/` on the published URL, then
+6. Verify the home page, `/privacy/` and `/legal/` on the published URL, then
    test the App Store button on an iPhone.
 
 For a pre-release check without publishing:
