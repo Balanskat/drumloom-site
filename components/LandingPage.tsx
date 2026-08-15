@@ -97,7 +97,7 @@ const copy = {
 } as const;
 
 const featureScreens = [
-  { src: "library.png", alt: "Drumloom Library showing Rudiments, Stickings, Grooves and Fills" },
+  { src: "rudiment.png", alt: "Drumloom playable Reverse Paradiddle exercise with sticking and notation" },
   { src: "practice.png", alt: "Drumloom Practice screen with a Daily 20 routine" },
   { src: "beat-builder.png", alt: "Drumloom Beat Builder on the Kick and Snare foundation step" },
   { src: "metronome.png", alt: "Drumloom Metronome screen showing 120 BPM and the green Start control" },
@@ -201,7 +201,7 @@ export default function LandingPage() {
             <span className="orb orb-one" />
             <span className="orb orb-two" />
             <div className="phone-frame">
-              <AppScreenshot src="library.png" alt="Drumloom Library screen showing Rudiments, Stickings, Grooves and Fills" loading="eager" />
+              <AppScreenshot src="rudiment.png" alt="Drumloom playable Reverse Paradiddle exercise with sticking and notation" loading="eager" />
             </div>
             <div className="floating-card card-timing">
               <span className="metric-icon">±</span>
