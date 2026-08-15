@@ -2,7 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata = {
-  title: "Datenschutz / Privacy",
+  title: "Privacy",
   description: "Drumloom privacy policy and App Store privacy information."
 };
 
@@ -13,86 +13,14 @@ export default function PrivacyPage() {
         <img src={siteConfig.asset("/brand-mark.png")} alt="" width="42" height="42" />
         <span>DRUMLOOM</span>
       </Link>
-      <p className="eyebrow">PRIVACY · DATENSCHUTZ</p>
+      <p className="eyebrow">PRIVACY</p>
       <h1>Your practice stays yours.</h1>
       <p className="legal-intro">
-        Effective 15 August 2026 · Stand 15. August 2026
+        Effective 15 August 2026
       </p>
 
       <article>
-        <h2>Deutsch</h2>
-        <p>
-          Drumloom erhebt, verkauft oder teilt keine personenbezogenen Daten mit dem
-          Entwickler. Es gibt kein Drumloom-Konto, kein Werbe-SDK, kein externes
-          Analyse-SDK und kein appübergreifendes Tracking.
-        </p>
-        <h3>Auf dem Gerät gespeicherte Daten</h3>
-        <p>
-          Routinen, eigene Patterns, Favoriten, Einstellungen, Übungseinheiten und
-          Tempo-Bestleistungen werden auf dem Gerät gespeichert. Wenn iCloud
-          verfügbar ist, kann die App diese Daten über den privaten
-          Apple-iCloud-Container des Nutzers synchronisieren. Der Entwickler hat
-          keinen Zugriff auf diesen privaten Container.
-        </p>
-        <h3>Käufe und Mitteilungen</h3>
-        <p>
-          Der optionale Pro-Kauf wird von Apple verarbeitet. Drumloom erhält nur
-          den Berechtigungsstatus zum Freischalten von Pro. Optionale
-          Übungserinnerungen plant iOS lokal; es gibt keinen Push-Server.
-        </p>
-        <h3>Mikrofon</h3>
-        <p>
-          Das Mikrofon wird ausschließlich nach iOS-Freigabe und nur beim
-          Stimmen einer Trommel, bei Play Along oder beim Aufnehmen einer Übung
-          verwendet. Tuner- und Play-Along-Analyse laufen in Echtzeit auf dem
-          Gerät. Play Along wertet Anschlagszeitpunkte aus und speichert dabei
-          keine Audioaufnahme. Bewusst erstellte Aufnahmen verlassen das Gerät
-          nur, wenn sie exportiert oder geteilt werden.
-        </p>
-        <h3>Export und Löschung</h3>
-        <p>
-          Nutzer können ihre Daten als Backup-Datei exportieren. Daten können in
-          der App gelöscht werden; zusätzlich können iCloud-Daten für Drumloom
-          deaktiviert oder die App gelöscht werden. Es gelten die
-          Aufbewahrungsregeln von Apple iCloud.
-        </p>
-        <h3>Support und Rechtsgrundlagen</h3>
-        <p>
-          Bei einer Supportanfrage werden E-Mail-Adresse, Nachricht und
-          freiwillig beigefügte Dateien zur Bearbeitung der Anfrage verarbeitet.
-          Support-E-Mails werden über Gmail verarbeitet; hierfür gilt auch die{" "}
-          <a href="https://policies.google.com/privacy?hl=de">
-            Datenschutzerklärung von Google
-          </a>
-          . Die Speicherung erfolgt nur so lange, wie sie für die Bearbeitung
-          und gesetzliche Pflichten erforderlich ist.
-        </p>
-        <p>
-          Soweit die DSGVO anwendbar ist, beruht die lokale Verarbeitung der
-          angeforderten App-Funktionen auf Art. 6 Abs. 1 lit. b DSGVO. Der
-          Support beruht auf dem berechtigten Interesse an Kundenbetreuung nach
-          Art. 6 Abs. 1 lit. f DSGVO.
-        </p>
-        <h3>Rechte</h3>
-        <p>
-          Je nach anwendbarem Recht bestehen insbesondere Rechte auf Auskunft,
-          Berichtigung, Löschung, Einschränkung, Widerspruch,
-          Datenübertragbarkeit und Beschwerde bei einer
-          Datenschutzaufsichtsbehörde. Drumloom verwendet keine automatisierte
-          Entscheidungsfindung und kein Profiling.
-        </p>
-        <h3>Bereitstellung dieser Website</h3>
-        <p>
-          Diese Seite setzt keine Cookies, verwendet keine Analyse und lädt
-          keine Werbe- oder Tracking-Skripte. Der Hosting-Anbieter verarbeitet
-          technisch notwendige Zugriffsdaten wie IP-Adresse, Zeitpunkt,
-          aufgerufene Seite, Referrer und User-Agent zur Auslieferung und
-          Absicherung der Website auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
-        </p>
-      </article>
-
-      <article lang="en">
-        <h2>English</h2>
+        <h2>Privacy policy</h2>
         <p>
           Drumloom does not collect, sell or share personal data with the
           developer. There is no Drumloom account, advertising SDK, third-party
@@ -166,18 +94,18 @@ export default function PrivacyPage() {
       </article>
 
       <p className="legal-contact">
-        Privacy questions · Datenschutzfragen:{" "}
+        Privacy questions:{" "}
         <a href={`mailto:${siteConfig.supportEmail}?subject=Drumloom%20Privacy`}>
           {siteConfig.supportEmail}
         </a>
       </p>
 
-      <section aria-label="Controller / Verantwortlicher">
+      <section aria-label="Controller">
         <p className="legal-identity">
-          Controller / Verantwortlicher: {siteConfig.legalName}
+          Controller: {siteConfig.legalName}
           <br />
           {siteConfig.legalAddress} ·{" "}
-          <Link href="/legal">Impressum</Link>
+          <Link href="/legal">Legal notice</Link>
         </p>
       </section>
       <Link className="back-link" href="/">

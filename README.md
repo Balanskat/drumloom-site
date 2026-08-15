@@ -2,6 +2,9 @@
 
 This repository contains the Drumloom launch site as a static Next.js export.
 
+The public site is English-only and uses real current Drumloom app screens for
+the Metronome, Practice, Library and Drum Tuner sections.
+
 It is prepared for a GitHub Pages project site at
 `https://balanskat.github.io/drumloom-site/`. GitHub Pages is intentionally not
 enabled yet, and the deployment workflow runs only when triggered manually.

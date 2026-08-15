@@ -1,104 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { ArrowUpRight, Check, Play, Spark } from "./icons";
 
-type Language = "de" | "en";
-
 const copy = {
-  de: {
-    nav: ["App", "Bibliothek", "Erstellen", "Pro"],
-    navIds: ["app", "library", "create", "pro"],
-    download: "Im App Store laden",
-    comingSoon: "Bald im App Store",
-    eyebrow: "Das Übungsinstrument für Drummer",
-    heroTitleA: "Practice like",
-    heroTitleB: "timing matters.",
-    heroBody:
-      "Drumloom verbindet ein präzises Metronom mit Notation, Drum-Playback und Routinen, die dich im Flow halten.",
-    lifetime: "Ein Kauf. Für immer.",
-    availability: "Für iPhone · App auf Englisch",
-    today: "HEUTE",
-    accuracy: "Samplegenau",
-    noTracking: "Ohne Tracking",
-    sectionEyebrow: "Ein Instrument. Kein Menü-Labyrinth.",
-    sectionTitle: "Alles, was eine gute Session braucht.",
-    sectionBody:
-      "Öffnen, Tempo setzen, spielen. Die wichtigen Dinge bleiben im Blick; Details warten dort, wo du sie brauchst.",
-    libraryEyebrow: "Groß, aber nicht chaotisch",
-    libraryTitle: "1.267 Übungen. Klar sortiert.",
-    libraryBody:
-      "Grooves, Fills, Rudiments, Stickings, Left Hand und Kick-Patterns – mit lesbarer Vorschau statt rätselhaften Titellisten.",
-    shuffle: "Neue Vorschläge",
-    levels: "3 Level",
-    grooveTitle: "Modern Pocket",
-    grooveMeta: "Intermediate · 82–118 BPM",
-    routineEyebrow: "Learn This · geführtes Üben",
-    routineTitle: "Von der Form bis zum sicheren Pocket.",
-    routineBody:
-      "Jede Übung lässt sich als geführte 5-Schritt-Session starten: Form lernen, Kontrolle und Tempo aufbauen, den eigenen Clock testen und den Ziel-Run spielen. Optional wird daraus ein 5-Tage-Pfad.",
-    createEyebrow: "Beat Builder · Fill Builder · Manual",
-    createTitle: "Musikalisch starten. Im Detail formen.",
-    createBody:
-      "Der Beat Builder führt vom Kick/Snare-Fundament über Cymbals und Toms bis zum Hi-Hat-Fuß. Der Fill Builder beginnt mit einem Sticking und ergänzt Akzente, Voices und Fußarbeit. Für volle Kontrolle bleibt das manuelle Grid.",
-    tunerEyebrow: "Drums stimmen, ohne Ratespiel",
-    tunerTitle: "Pitch, Lugs, Felle und Spektrum.",
-    tunerBody:
-      "Der Drum-Tuner führt vom Grundton bis zur einzelnen Stimmschraube und speichert Setups für dein komplettes Kit.",
-    features: [
-      ["Metronom", "Großer Puls, Tap Tempo, Unterteilungen und Akzente ohne visuelles Rauschen."],
-      ["Notation + Sound", "Cursor-synchrones Playback mit Ghost Notes, Flams, Swing und separaten Mixern."],
-      ["Poly", "Polyrhythmen und Polymeter sehen, hören und Schicht für Schicht verstehen."],
-      ["Beat + Fill Builder", "Grooves aus Kick/Snare-Skeletten und Fills aus Stickings entwickeln – geführt oder frei im Grid."],
-      ["Learn This", "Eine Übung in fünf Schritten lernen und auf Wunsch als fokussierten 5-Tage-Pfad weiterführen."],
-      ["Practice Modes", "Click Displacement, Feel Transitions und Pocket Trainer fordern Timing aus drei Richtungen."]
-    ],
-    routineSteps: [
-      ["01", "Warm-up", "Singles · 80 BPM", "03:00"],
-      ["02", "Rudiments", "Tempo ramp · +4", "06:00"],
-      ["03", "Groove", "Modern R&B pocket", "08:00"],
-      ["04", "Fill", "Bar-accurate changes", "03:00"]
-    ],
-    freeTitle: "Kostenlos starten.",
-    freeBody:
-      "Das Standard-Metronom, spielbare Übungen in jeder Hauptkategorie, Daily Rotation und eine Basis-Routine bleiben kostenlos.",
-    proTitle: "Alles freischalten.",
-    proBody:
-      "Die komplette Bibliothek, Poly, Builder, unbegrenzte Routinen, alle Sounds und der volle Fortschritt.",
-    forever: "dauerhaft",
-    noSub: "Kein Abo. Niemals.",
-    proBenefits: [
-      "1.267 Übungen plus Content-Updates",
-      "Alle Routinen, Builder und Sounds",
-      "Unbegrenzte eigene Patterns",
-      "Familienfreigabe"
-    ],
-    privacyTitle: "Deine Praxis bleibt deine.",
-    privacyBody:
-      "Kein Account, keine Werbung, kein externes Analytics-SDK. Deine Routinen und Logs bleiben auf deinen Geräten und in deinem privaten iCloud-Bereich.",
-    faqTitle: "Kurz beantwortet.",
-    faqs: [
-      ["Brauche ich ein Abo?", "Nein. Pro ist ein einmaliger Kauf und bleibt dauerhaft freigeschaltet."],
-      ["Kann ich Drumloom kostenlos nutzen?", "Ja. Das Standard-Metronom und ein sinnvoller Übungskern sind dauerhaft kostenlos."],
-      ["Funktioniert Audio bei gesperrtem Bildschirm?", "Ja. Routinen und Playback laufen im Hintergrund weiter; die Lockscreen-Anzeige zeigt den aktuellen Block."],
-      ["Kann ich eigene Übungen bauen?", "Ja. Beat Builder und Fill Builder führen dich musikalisch durch den Aufbau; im manuellen Grid bearbeitest du jeden Schritt selbst."]
-    ],
-    modesEyebrow: "Practice Modes",
-    modesTitle: "Dein Timing hat mehr als eine Komfortzone.",
-    modesBody:
-      "Versetze den Click, wechsle das Feel oder trainiere bewusst vor, auf und hinter dem Beat. Jeder Modus macht eine andere Seite deines Timings hörbar.",
-    modes: ["Displace the Click", "Change Feel", "Find the Pocket"],
-    countEyebrow: "Notation + Export",
-    countTitle: "Counts dort, wo sie helfen.",
-    countBody:
-      "Blende Zählzeiten optional in der Notation ein und nimm sie in PDF- oder PNG-Exporte eigener Creations mit.",
-    footerLine: "Made for the hours nobody sees.",
-    legal: "Impressum",
-    privacy: "Datenschutz"
-  },
   en: {
     nav: ["App", "Library", "Create", "Pro"],
     navIds: ["app", "library", "create", "pro"],
@@ -207,10 +112,8 @@ function StoreLink({ className, children }: { className: string; children: React
   );
 }
 
-function LearnThisPreview({ language }: { language: Language }) {
-  const steps = language === "de"
-    ? ["Form lernen", "Kontrolle aufbauen", "Tempo aufbauen", "Eigener Clock", "Ziel-Run"]
-    : ["Learn the Shape", "Build Control", "Build Speed", "Trust Your Clock", "Target Run"];
+function LearnThisPreview() {
+  const steps = ["Learn the Shape", "Build Control", "Build Speed", "Trust Your Clock", "Target Run"];
 
   return (
     <div className="learn-preview" aria-label="Learn This five-step session">
@@ -220,7 +123,7 @@ function LearnThisPreview({ language }: { language: Language }) {
           <span>0{index + 1}</span><strong>{step}</strong>{index === 0 && <Play />}
         </div>
       ))}
-      <div className="path-pill"><Spark /> {language === "de" ? "ALS 5-TAGE-PFAD" : "MAKE IT A 5-DAY PATH"}</div>
+      <div className="path-pill"><Spark /> MAKE IT A 5-DAY PATH</div>
     </div>
   );
 }
@@ -284,7 +187,7 @@ function TunerPreview() {
 
 function StaffPreview() {
   return (
-    <div className="staff" aria-label="Notationsvorschau: moderner Groove in Sechzehnteln">
+    <div className="staff" aria-label="Notation preview: modern sixteenth-note groove">
       <span className="staff-lines" />
       {[8, 20, 33, 45, 57, 70, 82, 94].map((left, index) => (
         <span
@@ -300,45 +203,20 @@ function StaffPreview() {
   );
 }
 
-function MetronomeInstrument({ language }: { language: Language }) {
-  const t = copy[language];
+function AppScreenshot({ src, alt, className = "", loading = "lazy" }: { src: string; alt: string; className?: string; loading?: "lazy" | "eager" }) {
   return (
-    <div className="instrument-shell" aria-label="Drumloom Metronom Vorschau">
-      <div className="instrument-top">
-        <span>{t.today}</span>
-        <span className="status-pill">4 / 4</span>
-      </div>
-      <div className="tempo-block">
-        <p>♩</p>
-        <strong>118</strong>
-        <span>BPM</span>
-      </div>
-      <div className="pulse-visual" aria-hidden="true">
-        <span />
-        <span />
-        <span className="pulse-active" />
-        <span />
-      </div>
-      <button className="instrument-play" type="button" aria-label="Metronom abspielen">
-        <Play />
-        <span>START</span>
-      </button>
-      <div className="instrument-footer">
-        <span>1 / 4</span>
-        <span>CLICK · WOOD</span>
-      </div>
-    </div>
+    <img
+      className={`app-screenshot ${className}`}
+      src={siteConfig.asset(`/screenshots/${src}`)}
+      alt={alt}
+      loading={loading}
+    />
   );
 }
 
 export default function LandingPage() {
-  const [language, setLanguage] = useState<Language>("de");
-  const t = copy[language];
+  const t = copy.en;
   const storeLabel = siteConfig.isAppStoreReady ? t.download : t.comingSoon;
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
 
   return (
     <>
@@ -346,11 +224,11 @@ export default function LandingPage() {
         Skip to content
       </a>
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="Drumloom Startseite">
+        <Link className="brand" href="/" aria-label="Drumloom home">
           <img src={siteConfig.asset("/brand-mark.png")} alt="" width="42" height="42" />
           <span>DRUMLOOM</span>
         </Link>
-        <nav aria-label="Hauptnavigation">
+        <nav aria-label="Main navigation">
           {t.nav.map((label, index) => (
             <a href={`#${t.navIds[index]}`} key={label}>
               {label}
@@ -358,24 +236,6 @@ export default function LandingPage() {
           ))}
         </nav>
         <div className="header-actions">
-          <div className="language-switch" aria-label="Sprache wählen">
-            <button
-              type="button"
-              className={language === "de" ? "active" : ""}
-              onClick={() => setLanguage("de")}
-              aria-pressed={language === "de"}
-            >
-              DE
-            </button>
-            <button
-              type="button"
-              className={language === "en" ? "active" : ""}
-              onClick={() => setLanguage("en")}
-              aria-pressed={language === "en"}
-            >
-              EN
-            </button>
-          </div>
           <StoreLink className="button button-small">{storeLabel}</StoreLink>
         </div>
       </header>
@@ -407,7 +267,7 @@ export default function LandingPage() {
                 <span>{t.lifetime}</span>
               </div>
             </div>
-            <div className="trust-row" aria-label="Produktvorteile">
+            <div className="trust-row" aria-label="Product benefits">
               <span>
                 <Check /> {t.accuracy}
               </span>
@@ -423,8 +283,7 @@ export default function LandingPage() {
             <span className="orb orb-one" />
             <span className="orb orb-two" />
             <div className="phone-frame">
-              <span className="phone-island" />
-              <MetronomeInstrument language={language} />
+              <AppScreenshot src="metronome.png" alt="Drumloom Metronome screen showing 120 BPM and the green Start control" loading="eager" />
             </div>
             <div className="floating-card card-timing">
               <span className="metric-icon">±</span>
@@ -508,7 +367,7 @@ export default function LandingPage() {
             <p className="eyebrow">{t.libraryEyebrow}</p>
             <h2>{t.libraryTitle}</h2>
             <p>{t.libraryBody}</p>
-            <div className="category-cloud" aria-label="Übungskategorien">
+            <div className="category-cloud" aria-label="Exercise categories">
               {["GROOVES 573", "FILLS 202", "RUDIMENTS 134", "KICK 120", "STICKINGS 143", "LEFT HAND 49"].map(
                 (category) => (
                   <span key={category}>{category}</span>
@@ -517,13 +376,13 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="product-shot product-shot-library">
-            <LibraryPreview />
+            <AppScreenshot src="library.png" alt="Drumloom Library screen with exercise categories" />
           </div>
         </section>
 
         <section className="routine-section section-grid" id="routines">
           <div className="product-shot product-shot-practice">
-            <LearnThisPreview language={language} />
+            <AppScreenshot src="practice.png" alt="Drumloom Practice screen with a Daily 20 session" />
           </div>
           <div className="routine-copy">
             <p className="eyebrow">{t.routineEyebrow}</p>
@@ -551,7 +410,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <BuilderPreview />
+              <AppScreenshot src="metronome.png" alt="Drumloom Metronome screen from the real app" />
             </div>
           </article>
 
@@ -568,7 +427,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <TunerPreview />
+              <AppScreenshot src="tuner.png" alt="Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" />
             </div>
           </article>
         </section>

@@ -25,8 +25,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    locale: "de_DE",
-    alternateLocale: "en_US",
+    locale: "en_US",
     siteName: "Drumloom",
     title: "Drumloom — Practice like timing matters.",
     description:
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
         url: siteConfig.absoluteAsset("/og.png"),
         width: 1200,
         height: 630,
-        alt: "Zwei dunkle Smartphones mit abstraktem Metronom und Drum-Pattern im grünen Drumloom-Studiolicht"
+        alt: "Drumloom Metronome and drum-pattern screens in green studio light"
       }
     ]
   },
@@ -66,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );

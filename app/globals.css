@@ -356,6 +356,7 @@ p {
   width: min(78%, 390px);
   aspect-ratio: 0.51;
   padding: 11px;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 68px;
   background: #030304;
@@ -363,6 +364,15 @@ p {
     0 50px 120px rgba(0, 0, 0, 0.68),
     inset 0 0 0 2px rgba(255, 255, 255, 0.04);
   transform: translateX(-50%) rotate(2deg);
+}
+
+.phone-frame .app-screenshot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 57px;
 }
 
 .phone-island {
@@ -513,7 +523,7 @@ p {
   right: 1%;
   width: 390px;
   height: 390px;
-  background: rgba(255, 128, 0, 0.08);
+  background: rgba(127, 169, 106, 0.08);
 }
 
 .orb-two {
@@ -521,7 +531,7 @@ p {
   bottom: 8%;
   width: 220px;
   height: 220px;
-  background: rgba(255, 194, 106, 0.06);
+  background: rgba(127, 169, 106, 0.06);
 }
 
 .floating-card {
@@ -1852,6 +1862,13 @@ footer a:hover {
   border-radius: 46px;
 }
 
+.product-shot .app-screenshot,
+.craft-device .app-screenshot {
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+
 .product-shot-library {
   transform: rotate(2deg);
 }
@@ -2111,7 +2128,7 @@ footer a:hover {
 
 .craft-tuner {
   background:
-    radial-gradient(circle at 20% 12%, rgba(255, 190, 96, 0.11), transparent 30rem),
+    radial-gradient(circle at 20% 12%, rgba(127, 169, 106, 0.11), transparent 30rem),
     #121214;
 }
 
