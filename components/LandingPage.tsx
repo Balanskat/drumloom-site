@@ -101,12 +101,12 @@ const copy = {
 } as const;
 
 const featureScreens = [
-  { src: "rudiment.png", alt: "Drumloom playable Reverse Paradiddle exercise with sticking and notation" },
-  { src: "practice.png", alt: "Drumloom Practice screen with a Daily 20 routine" },
-  { src: "beat-builder.png", alt: "Drumloom Beat Builder on the Kick and Snare foundation step" },
-  { src: "metronome.png", alt: "Drumloom Metronome screen showing 120 BPM and the green Start control" },
-  { src: "practice.png", alt: "Drumloom Practice screen for focused timing work" },
-  { src: "tuner.png", alt: "Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" }
+  { src: "rudiment-dark.png", alt: "Drumloom playable Reverse Paradiddle exercise with sticking and notation" },
+  { src: "practice-dark.png", alt: "Drumloom Practice screen with a Daily 20 routine" },
+  { src: "beat-builder-dark.png", alt: "Drumloom Beat Builder on the Kick and Snare foundation step" },
+  { src: "metronome-dark.png", alt: "Drumloom Metronome screen showing 120 BPM and the green Start control" },
+  { src: "practice-dark.png", alt: "Drumloom Practice screen for focused timing work" },
+  { src: "tuner-dark.png", alt: "Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" }
 ] as const;
 
 function StoreLink({ className, children }: { className: string; children: ReactNode }) {
@@ -205,7 +205,7 @@ export default function LandingPage() {
             <span className="orb orb-one" />
             <span className="orb orb-two" />
             <div className="phone-frame">
-              <AppScreenshot src="rudiment.png" alt="Drumloom playable Reverse Paradiddle exercise with sticking and notation" loading="eager" />
+              <AppScreenshot src="rudiment-dark.png" alt="Drumloom playable Reverse Paradiddle exercise with sticking and notation" loading="eager" />
             </div>
             <div className="floating-card card-timing">
               <span className="metric-icon">±</span>
@@ -261,7 +261,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="product-shot product-shot-library">
-            <AppScreenshot src="library.png" alt="Drumloom Library screen with exercise categories" />
+            <AppScreenshot src="library-dark.png" alt="Drumloom Library screen with exercise categories" />
           </div>
         </section>
 
@@ -279,6 +279,7 @@ export default function LandingPage() {
           </div>
           <div className="rudiment-loop-frame" role="img" aria-label="Looping visual preview of the Reverse Paradiddle exercise in Drumloom">
             <div className="rudiment-loop-screen">
+              {/* Keep the loop preview light as the deliberate video-like contrast. */}
               <AppScreenshot src="rudiment.png" alt="" loading="lazy" />
               <span className="rudiment-playhead" aria-hidden="true" />
             </div>
@@ -291,7 +292,7 @@ export default function LandingPage() {
 
         <section className="routine-section section-grid" id="routines">
           <div className="product-shot product-shot-practice">
-            <AppScreenshot src="practice.png" alt="Drumloom Practice screen with a Daily 20 session" />
+            <AppScreenshot src="practice-dark.png" alt="Drumloom Practice screen with a Daily 20 session" />
           </div>
           <div className="routine-copy">
             <p className="eyebrow">{t.routineEyebrow}</p>
@@ -319,7 +320,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <AppScreenshot src="beat-builder.png" alt="Drumloom Beat Builder on the Kick and Snare foundation step" />
+              <AppScreenshot src="beat-builder-dark.png" alt="Drumloom Beat Builder on the Kick and Snare foundation step" />
             </div>
           </article>
 
@@ -336,7 +337,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <AppScreenshot src="tuner.png" alt="Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" />
+              <AppScreenshot src="tuner-dark.png" alt="Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" />
             </div>
           </article>
         </section>
@@ -352,7 +353,7 @@ export default function LandingPage() {
               ))}
             </div>
             <div className="advanced-real-shot modes-shot">
-              <AppScreenshot src="practice.png" alt="Drumloom Practice screen used for focused timing work" />
+              <AppScreenshot src="practice-dark.png" alt="Drumloom Practice screen used for focused timing work" />
             </div>
           </article>
           <article className="advanced-card count-card">
@@ -360,7 +361,7 @@ export default function LandingPage() {
             <h2>{t.countTitle}</h2>
             <p>{t.countBody}</p>
             <div className="advanced-real-shot" aria-label="Beat Builder notation and count controls">
-              <AppScreenshot src="beat-builder.png" alt="Drumloom Beat Builder notation with the count control visible" />
+              <AppScreenshot src="beat-builder-dark.png" alt="Drumloom Beat Builder notation with the count control visible" />
             </div>
           </article>
         </section>
