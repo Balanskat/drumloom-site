@@ -16,7 +16,7 @@ export default function PrivacyPage() {
       <p className="eyebrow">PRIVACY · DATENSCHUTZ</p>
       <h1>Your practice stays yours.</h1>
       <p className="legal-intro">
-        Effective 27 July 2026 · Stand 27. Juli 2026
+        Effective 15 August 2026 · Stand 15. August 2026
       </p>
 
       <article>
@@ -43,10 +43,11 @@ export default function PrivacyPage() {
         <h3>Mikrofon</h3>
         <p>
           Das Mikrofon wird ausschließlich nach iOS-Freigabe und nur beim
-          Stimmen einer Trommel oder beim Aufnehmen einer Übung verwendet. Die
-          Analyse des Stimmgeräts läuft in Echtzeit auf dem Gerät und wird nicht
-          gespeichert. Aufnahmen verlassen das Gerät nur, wenn sie bewusst
-          exportiert oder geteilt werden.
+          Stimmen einer Trommel, bei Play Along oder beim Aufnehmen einer Übung
+          verwendet. Tuner- und Play-Along-Analyse laufen in Echtzeit auf dem
+          Gerät. Play Along wertet Anschlagszeitpunkte aus und speichert dabei
+          keine Audioaufnahme. Bewusst erstellte Aufnahmen verlassen das Gerät
+          nur, wenn sie exportiert oder geteilt werden.
         </p>
         <h3>Export und Löschung</h3>
         <p>
@@ -114,9 +115,11 @@ export default function PrivacyPage() {
         <h3>Microphone</h3>
         <p>
           The microphone is accessed only after iOS permission and only while
-          you tune a drum or record a practice take. Tuner analysis runs on the
-          device in real time and is not stored. Recordings leave the device
-          only when you export or share them yourself.
+          you tune a drum, use Play Along or record a practice take. Tuner and
+          Play Along analysis run on the device in real time. Play Along
+          evaluates onset timing and does not store an audio recording.
+          Recordings you deliberately create leave the device only when you
+          export or share them yourself.
         </p>
         <h3>Export and deletion</h3>
         <p>
