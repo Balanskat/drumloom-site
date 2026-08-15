@@ -3,7 +3,10 @@
 This repository contains the Drumloom launch site as a static Next.js export.
 
 The public site is English-only and uses real current Drumloom app screens for
-the Metronome, Practice, Library and Drum Tuner sections.
+the Rudiments/Library, Practice, Beat Builder, Metronome and Drum Tuner
+sections. The Beat Builder image is captured from the actual Kick & Snare
+foundation step, so the pattern and notation shown on the page are real app
+content rather than a CSS mockup.
 
 It is prepared for a GitHub Pages project site at
 `https://balanskat.github.io/drumloom-site/`. GitHub Pages is intentionally not

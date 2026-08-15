@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { ArrowUpRight, Check, Play, Spark } from "./icons";
+import { ArrowUpRight, Check, Spark } from "./icons";
 
 const copy = {
   en: {
@@ -44,12 +44,12 @@ const copy = {
     tunerBody:
       "The drum tuner guides you from the fundamental to every lug and saves setups for your complete kit.",
     features: [
-      ["Metronome", "Large pulse, tap tempo, subdivisions and accents without visual noise."],
-      ["Notation + sound", "Cursor-synced playback with ghosts, flams, swing and separate mix levels."],
-      ["Poly", "See, hear and understand polyrhythms and polymeters layer by layer."],
-      ["Beat + Fill Builder", "Develop grooves from kick/snare skeletons and fills from stickings – guided or freely in the grid."],
+      ["Rudiments + exercises", "Browse rudiments, stickings, grooves and fills with real playable patterns instead of mystery titles."],
       ["Learn This", "Learn an exercise in five steps, then keep going with an optional focused five-day path."],
-      ["Practice Modes", "Click Displacement, Feel Transitions and Pocket Trainer challenge timing from three directions."]
+      ["Beat + Fill Builder", "Develop grooves from kick/snare foundations and fills from stickings – guided or freely in the grid."],
+      ["Metronome", "Large pulse, tap tempo, subdivisions and accents without visual noise."],
+      ["Practice Modes", "Click Displacement, Feel Transitions and Pocket Trainer challenge timing from three directions."],
+      ["Drum Tuner", "Tune pitch, lugs and heads with a real-time spectrum for the kit in front of you."]
     ],
     routineSteps: [
       ["01", "Warm-up", "Singles · 80 BPM", "03:00"],
@@ -96,6 +96,15 @@ const copy = {
   }
 } as const;
 
+const featureScreens = [
+  { src: "library.png", alt: "Drumloom Library showing Rudiments, Stickings, Grooves and Fills" },
+  { src: "practice.png", alt: "Drumloom Practice screen with a Daily 20 routine" },
+  { src: "beat-builder.png", alt: "Drumloom Beat Builder on the Kick and Snare foundation step" },
+  { src: "metronome.png", alt: "Drumloom Metronome screen showing 120 BPM and the green Start control" },
+  { src: "practice.png", alt: "Drumloom Practice screen for focused timing work" },
+  { src: "tuner.png", alt: "Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" }
+] as const;
+
 function StoreLink({ className, children }: { className: string; children: ReactNode }) {
   if (!siteConfig.isAppStoreReady) {
     return (
@@ -109,97 +118,6 @@ function StoreLink({ className, children }: { className: string; children: React
     <a className={className} href={siteConfig.appStoreUrl}>
       {children}
     </a>
-  );
-}
-
-function LearnThisPreview() {
-  const steps = ["Learn the Shape", "Build Control", "Build Speed", "Trust Your Clock", "Target Run"];
-
-  return (
-    <div className="learn-preview" aria-label="Learn This five-step session">
-      <div className="preview-topline"><span>LEARN THIS</span><strong>1 / 5</strong></div>
-      {steps.map((step, index) => (
-        <div className={index === 0 ? "learn-step active" : "learn-step"} key={step}>
-          <span>0{index + 1}</span><strong>{step}</strong>{index === 0 && <Play />}
-        </div>
-      ))}
-      <div className="path-pill"><Spark /> MAKE IT A 5-DAY PATH</div>
-    </div>
-  );
-}
-
-function BuilderPreview() {
-  return (
-    <div className="builder-preview" aria-label="Beat Builder preview">
-      <div className="preview-topline"><span>BEAT BUILDER</span><strong>2 / 6</strong></div>
-      <h3>KICK + SNARE</h3>
-      <div className="builder-grid" aria-hidden="true">
-        {["K", "·", "·", "·", "S", "·", "K", "·", "K", "·", "·", "·", "S", "·", "·", "·"].map((step, index) => (
-          <span className={step === "K" || step === "S" ? "active" : ""} key={`${step}-${index}`}>{step}</span>
-        ))}
-      </div>
-      <div className="builder-stages">
-        {["SETUP", "FOUNDATION", "DETAILS", "CYMBALS", "TOMS", "HH FOOT"].map((stage, index) => (
-          <i className={index < 2 ? "active" : ""} title={stage} key={stage} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function LibraryPreview() {
-  const categories = [
-    ["SINGLE STROKES", "46"], ["RUDIMENTS", "134"],
-    ["STICKINGS", "143"], ["LEFT HAND", "49"],
-    ["KICK PATTERNS", "120"], ["GROOVES", "573"]
-  ];
-
-  return (
-    <div className="library-preview" aria-label="Drumloom Library preview">
-      <div className="preview-topline"><span>LIBRARY</span><strong>1,267 EXERCISES</strong></div>
-      <h3>Explore. Hear. Play.</h3>
-      <div className="search-preview">SEARCH EXERCISES</div>
-      <div className="category-preview-grid">
-        {categories.map(([name, count]) => (
-          <div key={name}><span>{name}</span><strong>{count}</strong></div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function TunerPreview() {
-  return (
-    <div className="tuner-preview" aria-label="Drumloom Drum Tuner preview">
-      <div className="preview-topline"><span>DRUM TUNER</span><strong>SNARE</strong></div>
-      <div className="tuner-dial">
-        <span>G3</span><strong>196.0</strong><small>HZ</small>
-      </div>
-      <div className="tuner-spectrum" aria-hidden="true">
-        {[32, 54, 78, 45, 92, 68, 39, 57, 34].map((height, index) => (
-          <i style={{ height: `${height}%` }} key={`${height}-${index}`} />
-        ))}
-      </div>
-      <div className="path-pill">CAPTURE READING</div>
-    </div>
-  );
-}
-
-function StaffPreview() {
-  return (
-    <div className="staff" aria-label="Notation preview: modern sixteenth-note groove">
-      <span className="staff-lines" />
-      {[8, 20, 33, 45, 57, 70, 82, 94].map((left, index) => (
-        <span
-          className={`note ${index === 4 ? "note-accent" : ""}`}
-          style={{ left: `${left}%`, top: index % 3 === 0 ? "34%" : "46%" }}
-          key={left}
-        >
-          <i />
-        </span>
-      ))}
-      <span className="cursor-line" />
-    </div>
   );
 }
 
@@ -283,7 +201,7 @@ export default function LandingPage() {
             <span className="orb orb-one" />
             <span className="orb orb-two" />
             <div className="phone-frame">
-              <AppScreenshot src="metronome.png" alt="Drumloom Metronome screen showing 120 BPM and the green Start control" loading="eager" />
+              <AppScreenshot src="library.png" alt="Drumloom Library screen showing Rudiments, Stickings, Grooves and Fills" loading="eager" />
             </div>
             <div className="floating-card card-timing">
               <span className="metric-icon">±</span>
@@ -314,46 +232,9 @@ export default function LandingPage() {
           {t.features.map(([title, body], index) => (
             <article className={`feature-card feature-${index + 1}`} key={title}>
               <div className="feature-number">0{index + 1}</div>
-              {index === 0 && (
-                <div className="mini-metronome" aria-hidden="true">
-                  <span />
-                  <span className="active" />
-                  <span />
-                  <span />
-                </div>
-              )}
-              {index === 1 && <StaffPreview />}
-              {index === 2 && (
-                <div className="poly-rings" aria-hidden="true">
-                  <i />
-                  <i />
-                  <strong>3:4</strong>
-                </div>
-              )}
-              {index === 3 && (
-                <div className="steps" aria-hidden="true">
-                  {["R", "L", "R", "—", "K", "L", "R", "F"].map((step, i) => (
-                    <span className={i === 4 || i === 7 ? "hot" : ""} key={`${step}-${i}`}>
-                      {step}
-                    </span>
-                  ))}
-                </div>
-              )}
-              {index === 4 && (
-                <div className="shuffle-visual" aria-hidden="true">
-                  <span>R</span>
-                  <span>L</span>
-                  <span>K</span>
-                  <Spark />
-                </div>
-              )}
-              {index === 5 && (
-                <div className="chart-visual" aria-hidden="true">
-                  {[32, 45, 40, 58, 66, 82, 94].map((height) => (
-                    <i style={{ height: `${height}%` }} key={height} />
-                  ))}
-                </div>
-              )}
+              <div className="feature-screenshot">
+                <AppScreenshot src={featureScreens[index].src} alt={featureScreens[index].alt} />
+              </div>
               <div className="feature-copy">
                 <h3>{title}</h3>
                 <p>{body}</p>
@@ -410,7 +291,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <AppScreenshot src="metronome.png" alt="Drumloom Metronome screen from the real app" />
+              <AppScreenshot src="beat-builder.png" alt="Drumloom Beat Builder on the Kick and Snare foundation step" />
             </div>
           </article>
 
@@ -442,15 +323,16 @@ export default function LandingPage() {
                 <div key={mode}><span>0{index + 1}</span><strong>{mode}</strong></div>
               ))}
             </div>
+            <div className="advanced-real-shot modes-shot">
+              <AppScreenshot src="practice.png" alt="Drumloom Practice screen used for focused timing work" />
+            </div>
           </article>
           <article className="advanced-card count-card">
             <p className="eyebrow">{t.countEyebrow}</p>
             <h2>{t.countTitle}</h2>
             <p>{t.countBody}</p>
-            <div className="count-preview" aria-label="Count overlay preview">
-              <div className="count-notes"><i /><i /><i /><i /></div>
-              <div className="count-labels"><span>1 e + a</span><span>2 e + a</span><span>3 e + a</span><span>4 e + a</span></div>
-              <div className="export-pills"><span>PDF</span><span>PNG</span></div>
+            <div className="advanced-real-shot" aria-label="Beat Builder notation and count controls">
+              <AppScreenshot src="beat-builder.png" alt="Drumloom Beat Builder notation with the count control visible" />
             </div>
           </article>
         </section>
