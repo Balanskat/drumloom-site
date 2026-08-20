@@ -24,7 +24,7 @@ const copy = {
     sectionBody:
       "Open it, set the tempo and play. The essentials stay visible; deeper controls are there when you need them.",
     libraryEyebrow: "Deep, never chaotic",
-    libraryTitle: "1,496 exercises. Clearly organized.",
+    libraryTitle: "1,594 exercises. Clearly organized.",
     libraryBody:
       "Grooves, fills, rudiments, stickings, left-hand and kick patterns – with readable previews instead of mystery titles.",
     rudimentLoopEyebrow: "Real exercise · loop preview",
@@ -70,7 +70,7 @@ const copy = {
     forever: "lifetime",
     noSub: "No subscription. Ever.",
     proBenefits: [
-      "1,496 exercises plus content updates",
+      "1,594 exercises plus content updates",
       "Every routine, builder and sound",
       "Unlimited custom patterns",
       "Family Sharing"

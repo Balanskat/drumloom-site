@@ -16,7 +16,7 @@ export const siteConfig = {
   // Keep in sync with `AppLinks.supportEmail` / `AppLegal` in the iOS app.
   supportEmail: "haid.creative@gmail.com",
   price: "14,99 €",
-  exerciseCount: "1,496",
+  exerciseCount: "1,594",
   legalName: "haid.creative · Eugen Schott",
   legalAddress: "Birkenweg 40 · 94405 Landau an der Isar · Germany"
 } as const;
