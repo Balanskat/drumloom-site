@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s · Drumloom"
   },
   description:
-    "Precise metronome, guided Beat and Fill Builders, readable notation, Learn This paths and focused timing modes for drummers. One purchase. No subscription.",
+    "Drumloom is a practice instrument for drummers: precise metronome, playable notation, bar-accurate routines and PDF, photo or screenshot import. One purchase. No subscription.",
   applicationName: "Drumloom",
   keywords: [
     "drum metronome",
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
     "beat builder",
     "fill builder",
     "drum notation",
+    "drum sheet music import",
+    "drum notation scanner",
     "polyrhythm",
     "drum exercises"
   ],
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Drumloom",
     title: "Drumloom — Practice like timing matters.",
     description:
-      "Metronome, Beat and Fill Builders, notation, Learn This and timing modes in one focused practice instrument.",
+      "A precise metronome, playable notation, routines and PDF, photo or screenshot import in one focused practice instrument.",
     images: [
       {
         url: siteConfig.absoluteAsset("/og.png"),
@@ -43,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Drumloom — Practice like timing matters.",
     description:
-      "Metronome, Beat and Fill Builders, notation, Learn This and timing modes in one focused practice instrument.",
+      "A precise metronome, playable notation, routines and PDF, photo or screenshot import in one focused practice instrument.",
     images: [siteConfig.absoluteAsset("/og.png")]
   },
   icons: {

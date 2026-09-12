@@ -13,16 +13,16 @@ const copy = {
     heroTitleA: "Practice like",
     heroTitleB: "timing matters.",
     heroBody:
-      "Drumloom brings a precise metronome, readable notation, drum playback and focused routines into one instrument.",
+      "Drumloom is a focused practice instrument for drummers: a precise metronome, playable notation and bar-accurate routines in one place.",
     lifetime: "One purchase. Forever.",
     availability: "For iPhone · English interface",
     today: "TODAY",
     accuracy: "Sample-accurate",
     noTracking: "No tracking",
     sectionEyebrow: "One instrument. No menu maze.",
-    sectionTitle: "Everything a focused session needs.",
+    sectionTitle: "Start with time. Stay with the music.",
     sectionBody:
-      "Open it, set the tempo and play. The essentials stay visible; deeper controls are there when you need them.",
+      "Open an exercise, hear the pattern and follow the notation. Build routines with tempo changes, repeats and rests; every transition stays on the bar.",
     libraryEyebrow: "Deep, never chaotic",
     libraryTitle: "1,601 exercises. Clearly organized.",
     libraryBody:
@@ -42,18 +42,34 @@ const copy = {
     createEyebrow: "Beat Builder · Fill Builder · Manual",
     createTitle: "Start musically. Shape every detail.",
     createBody:
-      "Beat Builder grows a groove from its kick-and-snare foundation through cymbals, toms and hi-hat foot. Fill Builder starts with a sticking, then adds accents, voices and footwork. The manual grid stays ready for complete control.",
+      "Beat Builder grows a groove from its kick-and-snare foundation through cymbals, toms and hi-hat foot. Fill Builder starts with a sticking, then adds accents, voices and footwork. Import a PDF, photo or screenshot into editable notation when the idea starts on a page.",
     tunerEyebrow: "Tune drums without the guesswork",
     tunerTitle: "Pitch, lugs, heads and spectrum.",
     tunerBody:
       "The drum tuner guides you from the fundamental to every lug and saves setups for your complete kit.",
     features: [
-      ["Rudiments + exercises", "Browse rudiments, stickings, grooves and fills with real playable patterns instead of mystery titles."],
-      ["Learn This", "Learn an exercise in five steps, then keep going with an optional focused five-day path."],
-      ["Beat + Fill Builder", "Develop grooves from kick/snare foundations and fills from stickings – guided or freely in the grid."],
-      ["Metronome", "Large pulse, tap tempo, subdivisions and accents without visual noise."],
-      ["Practice Modes", "Click Displacement, Feel Transitions and Pocket Trainer challenge timing from three directions."],
+      ["Playable library", "Explore 1,600+ exercises across rudiments, stickings, left hand, kick patterns, grooves and fills."],
+      ["Guided practice", "Learn an exercise in five steps, then keep going with an optional focused five-day path."],
+      ["Build, edit + import", "Write in the notation editor or step sequencer, generate fresh ideas, or turn a PDF, photo or screenshot into an editable draft."],
+      ["Metronome", "Meters, subdivisions, accents, separate levels and a live beat/count display without visual noise."],
+      ["Practice modes", "Click Displacement, Feel Transitions and Pocket Trainer challenge timing from three directions."],
       ["Drum Tuner", "Tune pitch, lugs and heads with a real-time spectrum for the kit in front of you."]
+    ],
+    includedEyebrow: "What you get",
+    includedTitle: "Everything for deliberate drum practice.",
+    includedFeatures: [
+      ["Focused metronome", "Meters, subdivisions, accents, independent levels and a live beat/count display."],
+      ["1,600+ exercises", "Singles, rudiments, stickings, left hand, kick patterns, grooves and fills."],
+      ["Notation that follows", "A cursor stays in sync with playback, with distinct right- and left-hand voices."],
+      ["Full drum vocabulary", "Ghost notes, flams, drags, accents, swing and full-kit playback."],
+      ["Poly rhythms", "Polyrhythms and polymeters with up to four independent layers."],
+      ["Routines", "Count-in, tempo steps, repeats, rests and voice cues that change on the bar."],
+      ["Write your own", "A notation editor and step sequencer for patterns and fills, plus fresh random suggestions."],
+      ["Import notation", "Turn a PDF, photo or screenshot of a drum part into a playable, editable notation draft."],
+      ["Export + MIDI", "Export MIDI or MusicXML files, and record live from your MIDI drum kit."],
+      ["Ableton Link", "Sync tempo with compatible apps and gear."],
+      ["Practice history", "Streaks, weekly goals, session history and tempo personal records."],
+      ["Private by design", "Private iCloud sync, file backup, dark and light appearance, Dynamic Type and VoiceOver."]
     ],
     routineSteps: [
       ["01", "Warm-up", "Singles · 80 BPM", "03:00"],
@@ -71,8 +87,8 @@ const copy = {
     noSub: "No subscription. Ever.",
     proBenefits: [
       "1,601 exercises plus content updates",
-      "Every routine, builder and sound",
-      "Unlimited custom patterns",
+      "Every routine, builder, import and sound",
+      "Unlimited custom patterns and fills",
       "Family Sharing"
     ],
     privacyTitle: "Your practice stays yours.",
@@ -83,17 +99,18 @@ const copy = {
       ["Do I need a subscription?", "No. Pro is a single lifetime purchase."],
       ["Can I use Drumloom for free?", "Yes. The standard metronome and a useful practice core remain free."],
       ["Does audio work with the screen locked?", "Yes. Routines and playback continue in the background while the Lock Screen shows the current block."],
-      ["Can I build my own exercises?", "Yes. Beat Builder and Fill Builder guide the musical setup, while the manual grid lets you edit every step yourself."]
+      ["Can I build my own exercises?", "Yes. Beat Builder and Fill Builder guide the musical setup, while the manual grid lets you edit every step yourself."],
+      ["Can I import a drum part?", "Yes. Import a PDF, photo or screenshot into an editable notation draft, then correct individual notes in the step sequencer."]
     ],
     modesEyebrow: "Practice Modes",
     modesTitle: "Your timing has more than one comfort zone.",
     modesBody:
       "Displace the click, move between feels or practice deliberately ahead of, on and behind the beat. Each mode reveals a different side of your timing.",
     modes: ["Displace the Click", "Change Feel", "Find the Pocket"],
-    countEyebrow: "Notation + export",
-    countTitle: "Counts where they help.",
+    countEyebrow: "Notation + import",
+    countTitle: "Read it, edit it, bring it in.",
     countBody:
-      "Show beat counts as an optional notation overlay and include them in PDF or PNG exports of your own creations.",
+      "Show beat counts where they help, edit each step in the grid and import a PDF, photo or screenshot as a playable notation draft. Export your own work as MIDI or MusicXML.",
     footerLine: "Made for the hours nobody sees.",
     legal: "Legal notice",
     privacy: "Privacy"
@@ -247,6 +264,24 @@ export default function LandingPage() {
           ))}
         </section>
 
+        <section className="included-section" aria-label="Everything included">
+          <div className="included-heading">
+            <p className="eyebrow">{t.includedEyebrow}</p>
+            <h2>{t.includedTitle}</h2>
+          </div>
+          <div className="included-grid">
+            {t.includedFeatures.map(([title, body], index) => (
+              <article className="included-item" key={title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="library-section section-grid" id="library">
           <div className="library-copy">
             <p className="eyebrow">{t.libraryEyebrow}</p>
@@ -361,7 +396,7 @@ export default function LandingPage() {
             <h2>{t.countTitle}</h2>
             <p>{t.countBody}</p>
             <div className="advanced-real-shot" aria-label="Beat Builder notation and count controls">
-              <AppScreenshot src="beat-builder-dark.png" alt="Drumloom Beat Builder notation with the count control visible" />
+              <AppScreenshot src="beat-builder-notation-dark.png" alt="Drumloom Beat Builder showing two bars of notation with beat counts above the step grid" />
             </div>
           </article>
         </section>
