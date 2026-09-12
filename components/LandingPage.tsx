@@ -122,7 +122,7 @@ const copy = {
 // to the control the card is talking about.
 const featureScreens = [
   { src: "rudiment-card.png", alt: "Drumloom notation for Single Stroke Four with sticking and beat counts" },
-  { src: "practice-card.png", alt: "Drumloom Practice screen with its session tabs" },
+  { src: "exercise-tools-card.png", alt: "Drumloom notation with sticking and counts above the practice tools" },
   { src: "beat-builder-card.png", alt: "Drumloom Beat Builder step grid with hi-hat, snare and kick placed" },
   { src: "metronome-card.png", alt: "Drumloom Metronome dial at 120 BPM with the beat display below" },
   { src: "practice-card.png", alt: "Drumloom Practice screen used for focused timing work" },
