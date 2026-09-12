@@ -47,9 +47,10 @@ create files inside `.github/workflows`.
    `.github/workflows/deploy-pages.yml` on `main`. Do not run it yet.
 2. In App Store Connect, copy Drumloom's numeric Apple ID and form the public
    URL `https://apps.apple.com/app/idAPPLE_ID`.
-3. In the GitHub repository, open **Settings → Secrets and variables → Actions
-   → Variables** and create `APP_STORE_URL` with that full URL. Until this is
-   set, the site safely shows a non-clickable “Coming soon” button.
+3. Optional: in the GitHub repository, open **Settings → Secrets and variables
+   → Actions → Variables** and create `APP_STORE_URL` with that full URL. The
+   live listing is already the built-in default in `lib/site-config.ts`, so the
+   variable is only needed to point a build somewhere else.
 4. Open **Settings → Pages** and choose **GitHub Actions** as the source.
 5. Open **Actions → Deploy GitHub Pages → Run workflow** and run it from
    `main`. This is the first step that publishes the site.

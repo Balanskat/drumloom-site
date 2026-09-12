@@ -1,7 +1,12 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+// Drumloom is on the App Store, so the live listing is the default rather than
+// a placeholder waiting on a repository variable. No country segment: Apple
+// sends every visitor to their own storefront, and a hard-coded /us/ would show
+// a German reader the wrong one. `NEXT_PUBLIC_APP_STORE_URL` still wins when a
+// build needs to point somewhere else.
 const appStoreUrl =
   process.env.NEXT_PUBLIC_APP_STORE_URL ||
-  "https://apps.apple.com/app/idREPLACE_ME";
+  "https://apps.apple.com/app/id6797268266";
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   "https://balanskat.github.io/drumloom-site";
