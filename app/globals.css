@@ -711,12 +711,9 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
-}
-
-.feature-3 .feature-screenshot .app-screenshot,
-.feature-5 .feature-screenshot .app-screenshot {
-  object-position: center 14%;
+  /* The sources are already cut to the control they show, so the window sits
+     on the middle of the crop rather than on the status bar. */
+  object-position: center;
 }
 
 .feature-6 {
@@ -2454,7 +2451,7 @@ footer a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: center;
 }
 
 .count-card .advanced-real-shot {

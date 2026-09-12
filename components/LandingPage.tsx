@@ -117,13 +117,16 @@ const copy = {
   }
 } as const;
 
+// A card window is 260px tall against a 2796px screen, so the full capture
+// would show the status bar and nothing else. These are the same captures cut
+// to the control the card is talking about.
 const featureScreens = [
-  { src: "rudiment-dark.png", alt: "Drumloom playable Reverse Paradiddle exercise with sticking and notation" },
-  { src: "practice-dark.png", alt: "Drumloom Practice screen with a Daily 20 routine" },
-  { src: "beat-builder-dark.png", alt: "Drumloom Beat Builder on the Kick and Snare foundation step" },
-  { src: "metronome-dark.png", alt: "Drumloom Metronome screen showing 120 BPM and the green Start control" },
-  { src: "practice-dark.png", alt: "Drumloom Practice screen for focused timing work" },
-  { src: "tuner-dark.png", alt: "Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" }
+  { src: "rudiment-card.png", alt: "Drumloom notation for Single Stroke Four with sticking and beat counts" },
+  { src: "practice-card.png", alt: "Drumloom Practice screen with its session tabs" },
+  { src: "beat-builder-card.png", alt: "Drumloom Beat Builder step grid with hi-hat, snare and kick placed" },
+  { src: "metronome-card.png", alt: "Drumloom Metronome dial at 120 BPM with the beat display below" },
+  { src: "practice-card.png", alt: "Drumloom Practice screen used for focused timing work" },
+  { src: "tuner-card.png", alt: "Drumloom Drum Tuner dial with the snare ready to tune" }
 ] as const;
 
 function StoreLink({ className, children }: { className: string; children: ReactNode }) {
@@ -355,7 +358,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <AppScreenshot src="beat-builder-dark.png" alt="Drumloom Beat Builder on the Kick and Snare foundation step" />
+              <AppScreenshot src="beat-builder-craft.png" alt="Drumloom Beat Builder with the pattern above the step grid" />
             </div>
           </article>
 
@@ -372,7 +375,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="craft-device">
-              <AppScreenshot src="tuner-dark.png" alt="Drumloom Drum Tuner screen with pitch, lugs, heads and spectrum" />
+              <AppScreenshot src="tuner-craft.png" alt="Drumloom Drum Tuner on Pitch with the tuning dial and lug tabs" />
             </div>
           </article>
         </section>
@@ -388,7 +391,7 @@ export default function LandingPage() {
               ))}
             </div>
             <div className="advanced-real-shot modes-shot">
-              <AppScreenshot src="practice-dark.png" alt="Drumloom Practice screen used for focused timing work" />
+              <AppScreenshot src="practice-card.png" alt="Drumloom Practice screen used for focused timing work" />
             </div>
           </article>
           <article className="advanced-card count-card">
@@ -396,7 +399,7 @@ export default function LandingPage() {
             <h2>{t.countTitle}</h2>
             <p>{t.countBody}</p>
             <div className="advanced-real-shot" aria-label="Beat Builder notation and count controls">
-              <AppScreenshot src="import-dark.png" alt="A drum chart imported from a screenshot, shown as notation with beat counts and ready to play" />
+              <AppScreenshot src="import-card.png" alt="A drum chart imported from a screenshot, shown as notation with beat counts" />
             </div>
           </article>
         </section>
