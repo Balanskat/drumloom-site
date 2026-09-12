@@ -396,7 +396,7 @@ export default function LandingPage() {
             <h2>{t.countTitle}</h2>
             <p>{t.countBody}</p>
             <div className="advanced-real-shot" aria-label="Beat Builder notation and count controls">
-              <AppScreenshot src="beat-builder-notation-dark.png" alt="Drumloom Beat Builder showing two bars of notation with beat counts above the step grid" />
+              <AppScreenshot src="import-dark.png" alt="A drum chart imported from a screenshot, shown as notation with beat counts and ready to play" />
             </div>
           </article>
         </section>
