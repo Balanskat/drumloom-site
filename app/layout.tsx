@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Drumloom",
-    title: "Drumloom — Practice like timing matters.",
+    title: "Drumloom — Find your pocket.",
     description:
       "A precise metronome, playable notation, routines and PDF, photo or screenshot import in one focused practice instrument.",
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drumloom — Practice like timing matters.",
+    title: "Drumloom — Find your pocket.",
     description:
       "A precise metronome, playable notation, routines and PDF, photo or screenshot import in one focused practice instrument.",
     images: [siteConfig.absoluteAsset("/og.png")]
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0a0a0b",
+  themeColor: "#090c0b",
   colorScheme: "dark"
 };
 
